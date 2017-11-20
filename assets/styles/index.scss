@@ -1,2 +1,74 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+
+$aqua: #6bbaa7;
+$sunshine: #FBA100;
+$lavender: #6C648B;
+$dusty-rose: #B6A19E;
+
+
+.modal-content {
+
+  padding: 15px;
+  margin: 45px auto;
+  label, input, .icon {
+  }
+  .input-group__details {
+    &:before {
+      background-color: $aqua !important;
+    }
+  }
+}
+
+.navbar {
+  // background-color: rgba(0,0,0,0.0);
+  background-color: $aqua;
+}
+
+.nav-links {
+  color: white;
+  font-family: fantasy;
+  font-weight: bold;
+}
+
+.nav-links::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: $aqua;
+  transition: width .3s;
+}
+
+.nav-links:hover::after {
+  width: 100%;
+  //transition: width .3s;
+}
+
+.navbar-brand {
+  color: white;
+}
+
+
+.numberCircle {
+  background: white;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 100%;
+  border: 6px solid $aqua;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.46);
+  color: $aqua;
+  display: table-cell;
+  border-radius: 50%;
+  width: 120px;
+  font-size: 32px;
+  margin: 20px;
+}
+.numberCircle span {
+    text-align: center;
+    line-height: 120px;
+    display: block;
+}
+
+.numberCircle:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
