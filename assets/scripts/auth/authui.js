@@ -53,6 +53,8 @@ const signInSuccess = (response) => {
   $('#uploads-thumbnails').show()
   $('#get-uploads-link').hide()
   $('#get-user-uploads-link').show()
+  $('.navbar-text').show()
+  $('.navbar-text').text(response.user.email)
   $('#file-upload-link').hide()
   $('#file-upload-all-link').show()
   // Used to clear out login data
@@ -99,6 +101,7 @@ const initializeForm = () => {
   $('#uploads-thumbnails').hide()
   $('#no-uploads-message').hide()
   $('#file-upload-all-link').hide()
+  $('.navbar-text').hide()
   store.user = null
 }
 
