@@ -171,25 +171,25 @@
           <form id="add-pet">
             <div class="form-group">
               <label for="pets-name" class="col-form-label">Pet's Name<span style="color:red">*</span></label>
-              <input name="pet[name]" class="form-control" id="pets-name-field" placeholder="Name of Pet" required>
+              <input type="text" name="pet[name]" class="form-control" id="pets-name-field" placeholder="Name of Pet" required>
             </div>
             <div class="form-group">
               <label for="breed" class="col-form-label">Breed (optional)</label>
-              <input name="pet[breed]" class="form-control" id="breed" placeholder="Breed">
+              <input type="text" name="pet[breed]" class="form-control" id="breed" placeholder="Breed">
             </div>
             <div class="form-group">
               <label for="license-number" class="col-form-label">License Number (optional)</label>
-              <input  name="pet[license]" class="form-control" id="License-number"
+              <input  type="text" name="pet[license]" class="form-control" id="License-number"
                 placeholder="license number">
             </div>
             <div class="form-group">
               <label for="insurance-info" class="col-form-label">Insurance Info (optional)</label>
-              <input  name="pet[insurance]" class="form-control" id="insurance-info"
+              <input  type="text" name="pet[insurance]" class="form-control" id="insurance-info"
                 placeholder="Insurance information">
             </div>
             <div class="form-group">
               <label for="vet-info" class="col-form-label">Vet Info (optional)</label>
-              <input  name="pet[vet]" class="form-control" id="vet-info"
+              <input  type="text" name="pet[vet]" class="form-control" id="vet-info"
                 placeholder="Vet information">
             </div>
 
@@ -257,11 +257,11 @@
   <!-- Pet Section -->
 
 <!-- move to handlebars  -->
-<div class="row col-xs-12 container-fluid">
-  <div class="numberCircle col-xs-3"><span>S</span></div>
+<div class="row col-xs-12 container-fluid" id="pet-list">
+  <!-- <div class="numberCircle col-xs-3"><span>S</span></div>
   <div class="numberCircle col-xs-3"><span>F</span></div>
   <div class="numberCircle col-xs-3"><span>J</span></div>
-  <div class="numberCircle col-xs-3"><span>J</span></div>
+  <div class="numberCircle col-xs-3"><span>J</span></div> -->
 </div>
   <!-- Appointment Section -->
 

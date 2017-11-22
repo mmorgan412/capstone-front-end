@@ -50,13 +50,8 @@ const signInSuccess = (response) => {
   $('#change-password-link').show()
   $('#create-ads-link').show()
   $('#manage-ads-link').show()
-  $('#uploads-thumbnails').show()
-  $('#get-uploads-link').hide()
-  $('#get-user-uploads-link').show()
   $('.navbar-text').show()
   $('.navbar-text').text(response.user.email)
-  $('#file-upload-link').hide()
-  $('#file-upload-all-link').show()
   // Used to clear out login data
   $('#sign-in-form').on('hidden.bs.modal', function () {
     $(this).find('form').trigger('reset')
@@ -64,6 +59,7 @@ const signInSuccess = (response) => {
   store.user = response.user
   $('#get-uploads-link').trigger('click')
   alertCallerAuthSuccess('frontSuccess', 'Sign-In Success')
+
 }
 
 const signInFailure = () => {
