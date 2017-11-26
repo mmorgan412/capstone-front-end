@@ -1,4 +1,5 @@
 const showPetsTemplate = require('../templates/pet-listing.handlebars')
+const showPetTemplate = require('../templates/one-pet.handlebars')
 
 const addPetSuccess = function (data) {
   console.log('pet success data is ', data)
@@ -13,13 +14,28 @@ const addPetFailure = function () {
 }
 
 const getPetsSuccess = function (data) {
+  // changed data to get just first letter but then can't get other data in handlebars  took out letters:newData from param
+  // console.log('data is ', data.pets)
+  // const newData = []
+  // for (let i = 0; i < data.pets.length; i++) {
+  //   newData.push(data.pets[i].name.charAt(0).toUpperCase())
+  // }
   const showPetsHtml = showPetsTemplate({ pets: data.pets })
-  $('#pet-list').append(showPetsHtml)
+  $('#pet-list').html(showPetsHtml)
+}
+
+// { letters: newData },
+
+const getPetSuccess = function (data) {
+  console.log('data is ', data)
+  const showPetHtml = showPetTemplate(data)
+  $('#pet-list').html(showPetHtml)
 }
 
 module.exports = {
   addPetSuccess,
   addPetFailure,
-  getPetsSuccess
+  getPetsSuccess,
+  getPetSuccess
   // addPetFailure,
 }

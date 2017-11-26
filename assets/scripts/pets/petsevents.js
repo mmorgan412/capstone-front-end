@@ -24,8 +24,19 @@ const onGetPets = function (event) {
     // .then(onDeletePet)
     // .then(onUpdatePet)
     // .then(onEditPet)
+    .then(onGetPet)
     .catch(petsUi.getPetsFailure)
 }
+
+const onGetPet = function (event) {
+  $('.numberCircle').on('click', function (event) {
+    const index = $(event.target).attr('data-id')
+    petsApi.getPet(index)
+      .then(petsUi.getPetSuccess)
+      .catch(petsUi.getPetFailure)
+  })
+}
+
 //
 // const onDeletePet = () => {
 //   $('.remove').on('click', function (event) {
@@ -86,6 +97,8 @@ const onGetPets = function (event) {
 
 const addPetHandlers = function () {
   $('#add-pet').on('submit', onAddPet)
+  $('#get-pets').on('click', onGetPets)
+  $('#get-pet').on('click', onGetPet)
 }
 
 module.exports = {

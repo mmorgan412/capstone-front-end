@@ -1,8 +1,12 @@
 
+
 {{#each pets as |pet|}}
-<!-- go through trails array and do something on each one -->
-        <div class="row">
-          <div class="numberCircle col-xs-3"><span>S</span></div>
-        </div>
+
+<!-- go through pets array and do something on each one -->
+
+          <button type="button" data-id="{{pet.id}}" class="numberCircle col-xs-3">
+              {{pet.name}}
+          </button>
+
 
 {{/each}}

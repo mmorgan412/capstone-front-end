@@ -57,9 +57,8 @@ const signInSuccess = (response) => {
     $(this).find('form').trigger('reset')
   })
   store.user = response.user
-  $('#get-uploads-link').trigger('click')
+  $('#get-pets').trigger('click')
   alertCallerAuthSuccess('frontSuccess', 'Sign-In Success')
-
 }
 
 const signInFailure = () => {

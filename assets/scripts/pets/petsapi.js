@@ -25,6 +25,8 @@ const getPets = function () {
 }
 
 const getPet = function (id) {
+  console.log('hitting getPet API')
+  console.log('id in API getPet is ', id)
   return $.ajax({
     url: config.apiOrigin + '/pets/' + id,
     method: 'GET',
@@ -67,9 +69,9 @@ const searchPets = function (data) {
 
 module.exports = {
   createPet,
+  getPet,
   getPets,
   updatePet,
   deletePet,
-  getPet,
   searchPets
 }
