@@ -98,6 +98,7 @@ const initializeForm = () => {
   $('#file-upload-all-link').hide()
   $('.navbar-text').hide()
   store.user = null
+  $('#get-pets').hide()
 }
 
 const signOutSuccess = () => {

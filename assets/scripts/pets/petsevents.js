@@ -21,7 +21,6 @@ const onGetPets = function (event) {
   event.preventDefault()
   petsApi.getPets()
     .then(petsUi.getPetsSuccess)
-    // .then(onDeletePet)
     // .then(onUpdatePet)
     // .then(onEditPet)
     .then(onGetPet)
@@ -33,22 +32,21 @@ const onGetPet = function (event) {
     const index = $(event.target).attr('data-id')
     petsApi.getPet(index)
       .then(petsUi.getPetSuccess)
+      .then(onDeletePet)
       .catch(petsUi.getPetFailure)
   })
 }
 
-//
-// const onDeletePet = () => {
-//   $('.remove').on('click', function (event) {
-//     const index = $(event.target).attr('data-id')
-//     petsApi.deletePet(index)
-//       .then(petsUi.deletePetSuccess)
-//       .then(() => {
-//         $(event.target).parent().parent().hide()
-//       })
-//       .catch(petsUi.deletePetFailure)
-//   })
-// }
+const onDeletePet = (event) => {
+  $('.remove').on('click', function (event) {
+    event.preventDefault()
+    console.log('hitting onDeletePet')
+    const index = $(event.target).attr('data-id')
+    petsApi.deletePet(index)
+      .then(petsUi.deletePetSuccess)
+      .catch(petsUi.deletePetFailure)
+  })
+}
 //
 // const onEditPet = () => {
 //   $('.edit').on('click', function (event) {

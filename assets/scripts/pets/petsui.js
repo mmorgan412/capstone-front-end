@@ -4,6 +4,7 @@ const showPetTemplate = require('../templates/one-pet.handlebars')
 const addPetSuccess = function (data) {
   console.log('pet success data is ', data)
   console.log('data.pets is ', data.pets)
+  $('#get-pets').trigger('click')
   // window.setTimeout(function () {
   //   $('#add-message').fadeOut()
   // }, 3000)
@@ -26,6 +27,10 @@ const getPetsSuccess = function (data) {
 
 // { letters: newData },
 
+const deletePetSuccess = function () {
+  $('#get-pets').trigger('click')
+}
+
 const getPetSuccess = function (data) {
   console.log('data is ', data)
   const showPetHtml = showPetTemplate(data)
@@ -36,6 +41,7 @@ module.exports = {
   addPetSuccess,
   addPetFailure,
   getPetsSuccess,
-  getPetSuccess
+  getPetSuccess,
+  deletePetSuccess
   // addPetFailure,
 }
