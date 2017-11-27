@@ -4,10 +4,12 @@ const setAPIOrigin = require('../../lib/set-api-origin')
 const config = require('./config')
 const authevents = require('./auth/authevents')
 const petevents = require('./pets/petsevents')
+const appointmentevents = require('./appointments/apptsevents.js')
 
 $(() => {
   authevents.addAuthHandlers()
   petevents.addPetHandlers()
+  appointmentevents.addAppointmentHandlers()
 })
 
 $(() => {
