@@ -5,6 +5,8 @@ const addPetSuccess = function (data) {
   console.log('pet success data is ', data)
   console.log('data.pets is ', data.pets)
   $('#get-pets').trigger('click')
+  $('#add-pet-form').modal('hide')
+  $('#add-pet')[0].reset()
   // window.setTimeout(function () {
   //   $('#add-message').fadeOut()
   // }, 3000)
@@ -37,11 +39,18 @@ const getPetSuccess = function (data) {
   $('#pet-list').html(showPetHtml)
 }
 
+const updatePetSuccess = function (data) {
+  $('#edit-pet-modal').modal('hide')
+  $('#update-pet')[0].reset()
+  getPetSuccess(data)
+}
+
 module.exports = {
   addPetSuccess,
   addPetFailure,
   getPetsSuccess,
   getPetSuccess,
-  deletePetSuccess
+  deletePetSuccess,
+  updatePetSuccess
   // addPetFailure,
 }

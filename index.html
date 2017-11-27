@@ -97,7 +97,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="sign-in-message">Sign In to Upload Files</h5>
+          <h5 class="modal-title" id="sign-in-message"></h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           </button>
         </div>
@@ -247,6 +247,50 @@
           <div class="modal-footer">
           <button type="button" id="sign-up-close-button" class="btn btn-info modal-button close-modal" data-dismiss="modal">Close</button>
           <button type="submit" name="submit" class="btn btn-primary modal-button">Add Appointment</button>
+        </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Pet Modal -->
+
+  <div class="modal fade" id="edit-pet-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Update Pet Information</h5>
+          <span aria-hidden="true"> </span>
+        </div>
+        <div class="modal-body">
+          <form id="update-pet" class="update-pet-form">
+            <div class="form-group">
+              <label for="pets-name" class="col-form-label">Pet's Name<span style="color:red">*</span></label>
+              <input type="text" name="pet[name]" class="form-control" id="pets-name-field" placeholder="Name of Pet" required>
+            </div>
+            <div class="form-group">
+              <label for="breed" class="col-form-label">Breed (optional)</label>
+              <input type="text" name="pet[breed]" class="form-control" id="breed" placeholder="Breed">
+            </div>
+            <div class="form-group">
+              <label for="license-number" class="col-form-label">License Number (optional)</label>
+              <input  type="text" name="pet[license_number]" class="form-control" id="License-number"
+                placeholder="license number">
+            </div>
+            <div class="form-group">
+              <label for="insurance-info" class="col-form-label">Insurance Info (optional)</label>
+              <input  type="text" name="pet[insurance_info]" class="form-control" id="insurance-info"
+                placeholder="Insurance information">
+            </div>
+            <div class="form-group">
+              <label for="vet-info" class="col-form-label">Vet Info (optional)</label>
+              <input  type="text" name="pet[vet]" class="form-control" id="vet-info"
+                placeholder="Vet information">
+            </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary modal-button" data-dismiss="modal">Close</button>
+          <button type="submit" name="submit" class="btn btn-primary modal-button">Update</button>
         </div>
         </form>
         </div>
