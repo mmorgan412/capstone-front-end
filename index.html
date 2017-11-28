@@ -16,7 +16,7 @@
 <nav class="navbar">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-links">
+      <button type="button" class="navbar-toggle collapsed navbar-brand" data-toggle="collapse" data-target="#nav-links">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -28,9 +28,13 @@
         <li>
            <p class="navbar-text"></p>
          </li>
-        <li>
-          <a href="#" class="nav-links" id="add-pet-link" data-toggle="modal" data-target="#add-pet-form">Add Pet</a>
-        </li>
+        <li class="dropdown nav-links">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Pets
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu" id="pets-dropdown">
+                <!-- pets-dropdown handlebars -->
+            </ul>
+          </li>
         <li>
           <a href="#" class="nav-links" id='new-appointment' data-toggle="modal" data-target="#add-appointment-form">New Appointment</a>
         </li>

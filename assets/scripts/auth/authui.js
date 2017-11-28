@@ -86,11 +86,13 @@ const initializeForm = () => {
   $('#change-password-link').hide()
   $('#sign-in-link').show()
   $('#sign-up-link').show()
-  $('#sign-in-message').text('Please Sign In To Get Started.')
+  $('#sign-in-message').text('Please Sign In To Get Started')
   $('#sign-in-form').modal('show')
   $('.navbar-text').hide()
   store.user = null
   $('#get-pets').hide()
+  $('#get-appointments').hide()
+  $('#new-appointment').hide()
 }
 
 const signOutSuccess = () => {

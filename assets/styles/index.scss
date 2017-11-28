@@ -21,7 +21,7 @@ $dusty-rose: #B6A19E;
 }
 
 .navbar {
-  // background-color: rgba(0,0,0,0.0);
+  background-color: rgba(0,0,0,0.0);
   background-color: $aqua;
 }
 
@@ -29,6 +29,12 @@ $dusty-rose: #B6A19E;
   color: white;
   font-family: fantasy;
   font-weight: bold;
+}
+
+.icon-bar {
+  color: black;
+  background-color: black;
+  display: block;
 }
 
 .nav-links::after {
@@ -46,9 +52,8 @@ $dusty-rose: #B6A19E;
 }
 
 .navbar-brand {
-  color: white;
+  color: black;
 }
-
 
 .numberCircle {
   background: white;

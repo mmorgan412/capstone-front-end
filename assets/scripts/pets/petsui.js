@@ -1,6 +1,7 @@
 const showPetsTemplate = require('../templates/pet-listing.handlebars')
 const showPetTemplate = require('../templates/one-pet.handlebars')
 const store = require('../store')
+const showPetsDropdownTemplate = require('../templates/pets-dropdown.handlebars')
 
 const addPetSuccess = function (data) {
   console.log('pet success data is ', data)
@@ -8,6 +9,7 @@ const addPetSuccess = function (data) {
   $('#get-pets').trigger('click')
   $('#add-pet-form').modal('hide')
   $('#add-pet')[0].reset()
+  $('#appointment-list').hide()
   // window.setTimeout(function () {
   //   $('#add-message').fadeOut()
   // }, 3000)
@@ -18,24 +20,22 @@ const addPetFailure = function () {
 }
 
 const getPetsSuccess = function (data) {
-  // console.log('data is ', data)
-  // data.pets.forEach(function (obj) {
-  //   console.log('obj is ', obj)
-  //   obj.letter = obj.pets.name.charAt(0)
-  // })
-  // console.log('getpetssuccess data is ', data)
-  // const newData = []
-  // for (let i = 0; i < data.pets.length; i++) {
-  //   newData.push(data.pets[i].name.charAt(0).toUpperCase())
-  // }
+  data.pets.forEach(function (obj) {
+    obj.letter = obj.name.charAt(0).toUpperCase()
+  })
+  console.log('data is ', data)
+  console.log('data.pets is ', data.pets)
   const showPetsHtml = showPetsTemplate({ pets: data.pets })
   $('#pet-list').html(showPetsHtml)
+  const showPetsDropdownHtml = showPetsDropdownTemplate({ pets: data.pets })
+  $('#pets-dropdown').html(showPetsDropdownHtml)
 }
 
 // { letters: newData },
 
 const deletePetSuccess = function () {
   $('#get-pets').trigger('click')
+  $('#appointment-list').hide()
 }
 
 const getPetSuccess = function (data) {
@@ -43,8 +43,8 @@ const getPetSuccess = function (data) {
   const showPetHtml = showPetTemplate(data)
   $('#pet-list').html(showPetHtml)
   store.pets = data.pet
-  console.log(data.pet)
-  console.log(store.pets)
+  $('#get-appointments').trigger('click')
+  $('#new-appointment').show()
 }
 
 const updatePetSuccess = function (data) {

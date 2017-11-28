@@ -1,0 +1,11 @@
+
+
+
+{{#each pets as |pet|}}
+
+    <li><a class="pet-dropdown" data-id="{{pet.id}}" href="#">{{pet.name}}</a></li>
+
+{{/each}}
+
+
+<li><a href="#" class="nav-links" id="add-pet-link" data-toggle="modal" data-target="#add-pet-form"><b>Add New Pet</b></a></li>

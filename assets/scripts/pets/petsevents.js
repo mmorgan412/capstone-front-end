@@ -14,20 +14,31 @@ const onAddPet = function (event) {
     .catch(petsUi.addPetFailure)
 }
 
-// const addPetDisplay = function () {
-// }
-
 const onGetPets = function (event) {
   event.preventDefault()
   petsApi.getPets()
     .then(petsUi.getPetsSuccess)
     .then(onGetPet)
+    .then(onGetPetDropdown)
     .catch(petsUi.getPetsFailure)
 }
 
 const onGetPet = function (event) {
   $('.numberCircle').on('click', function (event) {
     const index = $(event.target).attr('data-id')
+    petsApi.getPet(index)
+      .then(petsUi.getPetSuccess)
+      .then(onDeletePet)
+      .then(onEditPet)
+      .then(onUpdatePet)
+      .catch(petsUi.getPetFailure)
+  })
+}
+
+const onGetPetDropdown = function (event) {
+  $('.pet-dropdown').on('click', function (event) {
+    const index = $(event.target).attr('data-id')
+    console.log('index is ', index)
     petsApi.getPet(index)
       .then(petsUi.getPetSuccess)
       .then(onDeletePet)
