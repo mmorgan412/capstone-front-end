@@ -31,7 +31,7 @@ const getAppointmentsSuccess = function (data) {
     $('#appointment-list').show()
   } else {
     $('#appointment-list').show()
-    $('#appointment-list').append('You currently have no appointments.')
+    $('#appointment-list').html('You currently have no appointments.')
   }
 }
 

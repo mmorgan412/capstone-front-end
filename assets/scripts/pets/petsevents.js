@@ -23,15 +23,19 @@ const onGetPets = function (event) {
     .catch(petsUi.getPetsFailure)
 }
 
+const getPetHandler = function (index) {
+  petsApi.getPet(index)
+    .then(petsUi.getPetSuccess)
+    .then(onDeletePet)
+    .then(onEditPet)
+    .then(onUpdatePet)
+    .catch(petsUi.getPetFailure)
+}
+
 const onGetPet = function (event) {
   $('.numberCircle').on('click', function (event) {
     const index = $(event.target).attr('data-id')
-    petsApi.getPet(index)
-      .then(petsUi.getPetSuccess)
-      .then(onDeletePet)
-      .then(onEditPet)
-      .then(onUpdatePet)
-      .catch(petsUi.getPetFailure)
+    getPetHandler(index)
   })
 }
 
@@ -66,6 +70,7 @@ const onEditPet = () => {
     petsApi.getPet(index)
       .then(function (data) {
         const petName = data.pet.name
+        console.log('pets name is ', petName)
         const licenseNumber = data.pet.license_number
         const breed = data.pet.breed
         const insuranceInfo = data.pet.insurance_info
@@ -88,6 +93,9 @@ const onUpdatePet = () => {
     const data = getFormFields(this)
     petsApi.updatePet(data, store.petId)
       .then(petsUi.updatePetSuccess)
+      .then(function (result) {
+        getPetHandler(result.pet.id)
+      })
       .catch(petsUi.updatePetFailure)
   })
 }
