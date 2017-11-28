@@ -22,8 +22,8 @@ const deleteAppointmentSuccess = function () {
 
 const getAppointmentsSuccess = function (data) {
   data.appointments.map(result => {
-    result.time = moment(result.time).format('LT')
     result.date = moment(result.date).format('L')
+    result.time = moment(result.time, 'HH:mm').format('LT')
     return result
   })
   const showAppointmentHtml = showAppointmentsTemplate(data)
@@ -34,7 +34,7 @@ const getAppointmentsSuccess = function (data) {
 const updateAppointmentSuccess = function (data) {
   $('#edit-appointment-modal').modal('hide')
   $('#update-appointment')[0].reset()
-  getAppointmentsSuccess(data)
+  $('#get-appointments').trigger('click')
 }
 
 module.exports = {

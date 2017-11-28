@@ -4,13 +4,15 @@ const getFormFields = require(`../../../lib/get-form-fields`)
 const appointmentsApi = require('./appointmentsapi')
 const appointmentsUi = require('./appointmentsui')
 const store = require('./../store.js')
-const moment = require('moment')
+// const moment = require('moment')
 
 const onAddAppointment = function (event) {
   event.preventDefault()
   const id = store.pets.id
   $("input[name='appointment[pet_id]'").val(id)
   const data = getFormFields(this)
+  console.log('on add appt data is ', data)
+  console.log('data.appointment.time is ', data.appointment.time)
   appointmentsApi.createAppointment(data)
     .then(appointmentsUi.addAppointmentSuccess)
     .catch(appointmentsUi.addAppointmentFailure)
@@ -39,7 +41,7 @@ const onGetAppointments = function (event) {
 // }
 
 const onDeleteAppointment = (event) => {
-  $('.remove').on('click', function (event) {
+  $('.remove-appointment').on('click', function (event) {
     event.preventDefault()
     const index = $(event.target).attr('data-id')
     appointmentsApi.deleteAppointment(index)
@@ -52,7 +54,8 @@ const onEditAppointment = () => {
   $('.edit-appointment').on('click', function (event) {
     const index = $(event.target).attr('data-id')
     appointmentsApi.getAppointment(index).then(function (data) {
-      data.appointment.time = moment(data.appointment.time).format('HH:mm:ss')
+      console.log('oneditappointment', data)
+      console.log('oneditappointmentaftermoment', data)
       const appointmentDate = data.appointment.date
       const appointmentTime = data.appointment.time
       const weight = data.appointment.weight
