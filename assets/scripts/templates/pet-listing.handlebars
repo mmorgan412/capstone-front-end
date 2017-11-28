@@ -1,11 +1,11 @@
-
+{{#initialLetter}}{{pet.name}}{{/initialLetter}}
 
 {{#each pets as |pet|}}
 
 <!-- go through pets array and do something on each one -->
 
           <button type="button" data-id="{{pet.id}}" class="numberCircle col-xs-3">
-              {{#initialLetter}}{{pet.name}}{{/initialLetter}}
+              {{#initialLetter}} {{ pet.name }} {{/initialLetter}}
           </button>
 
 

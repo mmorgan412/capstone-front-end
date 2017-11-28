@@ -18,8 +18,12 @@ const addPetFailure = function () {
 }
 
 const getPetsSuccess = function (data) {
-  // changed data to get just first letter but then can't get other data in handlebars  took out letters:newData from param
-  // console.log('data is ', data.pets)
+  // console.log('data is ', data)
+  // data.pets.forEach(function (obj) {
+  //   console.log('obj is ', obj)
+  //   obj.letter = obj.pets.name.charAt(0)
+  // })
+  // console.log('getpetssuccess data is ', data)
   // const newData = []
   // for (let i = 0; i < data.pets.length; i++) {
   //   newData.push(data.pets[i].name.charAt(0).toUpperCase())

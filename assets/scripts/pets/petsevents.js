@@ -54,15 +54,10 @@ const onEditPet = () => {
     petsApi.getPet(index).then(function (data) {
       const petName = data.pet.name
       const licenseNumber = data.pet.license_number
-      console.log('license number is ', licenseNumber)
       const breed = data.pet.breed
-      console.log('breed is ', breed)
       const insuranceInfo = data.pet.insurance_info
-      console.log('insurance info  ', insuranceInfo)
       const vet = data.pet.vet
-      console.log('vet  ', vet)
       const id = data.pet.id
-      console.log('id  ', id)
       store.petId = data.pet.id
       $('data-index').val(id)
       $("input[name='pet[name]'").val(petName)
@@ -76,7 +71,6 @@ const onEditPet = () => {
 
 const onUpdatePet = () => {
   $('#update-pet').on('submit', function (event) {
-    console.log('hitting onUpdatePet')
     event.preventDefault()
     const data = getFormFields(this)
     petsApi.updatePet(data, store.petId)
@@ -84,17 +78,6 @@ const onUpdatePet = () => {
       .catch(petsUi.updatePetFailure)
   })
 }
-
-// const searchPets = (event) => {
-//   event.preventDefault()
-//   const data = getFormFields(event.target)
-//   petsApi.searchPets(data.pet.rating)
-//     .then(petsUi.searchPetsSuccess)
-//     .then(deletePet)
-//     .then(editPet)
-//     .then(updatePet)
-//     .catch(petsUi.searchPetsFailure)
-// }
 
 const addPetHandlers = function () {
   $('#add-pet').on('submit', onAddPet)
