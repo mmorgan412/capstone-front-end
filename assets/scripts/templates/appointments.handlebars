@@ -15,7 +15,20 @@
       <th scope="row"></th>
       <td>{{appointment.date}}</td>
       <td>{{appointment.time}}</td>
-      <td>{appointment.description}}</td>
+      <td>{{appointment.description}}</td>
+      <td>
+      <a href="#" class="hb-buttons thumbnail-images contextDisplay" data-trigger="focus" data-toggle="popover" title="Appointment" data-html="true"
+        data-content="<b>Date:</b> {{appointment.date}}<br/>
+        <b>Time:</b> {{appointment.time}}<br/>
+        <b>Cost:</b> ${{appointment.cost}}<br/>
+        <b>Weight:</b> {{appointment.weight}}<br/>
+        <b>Description:</b> {{appointment.description}}<br/>
+        <b>Notes:</b> {{appointment.notes}}">
+        See More
+      </a>
+      <button data-id="{{appointment.id}}" type="button"
+      class="remove-appointment">Remove</button>
+      <button data-id="{{appointment.id}}"type="button" class="edit-appointment" data-toggle="modal" data-target="#edit-appointment-modal">Update</button></td>
     </tr>
 
     {{/each}}

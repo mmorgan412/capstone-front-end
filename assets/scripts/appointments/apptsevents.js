@@ -4,12 +4,13 @@ const getFormFields = require(`../../../lib/get-form-fields`)
 const appointmentsApi = require('./appointmentsapi')
 const appointmentsUi = require('./appointmentsui')
 const store = require('./../store.js')
+const moment = require('moment')
 
 const onAddAppointment = function (event) {
-  console.log(event)
   event.preventDefault()
+  const id = store.pets.id
+  $("input[name='appointment[pet_id]'").val(id)
   const data = getFormFields(this)
-  console.log('appointment data is', data)
   appointmentsApi.createAppointment(data)
     .then(appointmentsUi.addAppointmentSuccess)
     .catch(appointmentsUi.addAppointmentFailure)
@@ -17,28 +18,29 @@ const onAddAppointment = function (event) {
 
 const onGetAppointments = function (event) {
   event.preventDefault()
-  appointmentsApi.getAppointments()
+  appointmentsApi.getAppointments(store.pets.id)
     .then(appointmentsUi.getAppointmentsSuccess)
-    .then(onGetAppointment)
+    .then(onDeleteAppointment)
+    .then(onEditAppointment)
+    .then(onUpdateAppointment)
     .catch(appointmentsUi.getAppointmentsFailure)
 }
 
-const onGetAppointment = function (event) {
-  $('.numberCircle').on('click', function (event) {
-    const index = $(event.target).attr('data-id')
-    appointmentsApi.getAppointment(index)
-      .then(appointmentsUi.getAppointmentSuccess)
-      .then(onDeleteAppointment)
-      .then(onEditAppointment)
-      .then(onUpdateAppointment)
-      .catch(appointmentsUi.getAppointmentFailure)
-  })
-}
+// const onGetAppointment = function (event) {
+//   $('.numberCircle').on('click', function (event) {
+//     const index = $(event.target).attr('data-id')
+//     appointmentsApi.getAppointment(index)
+//       .then(appointmentsUi.getAppointmentSuccess)
+//       .then(onDeleteAppointment)
+//       .then(onEditAppointment)
+//       .then(onUpdateAppointment)
+//       .catch(appointmentsUi.getAppointmentFailure)
+//   })
+// }
 
 const onDeleteAppointment = (event) => {
   $('.remove').on('click', function (event) {
     event.preventDefault()
-    console.log('hitting onDeleteAppointment')
     const index = $(event.target).attr('data-id')
     appointmentsApi.deleteAppointment(index)
       .then(appointmentsUi.deleteAppointmentSuccess)
@@ -47,34 +49,34 @@ const onDeleteAppointment = (event) => {
 }
 
 const onEditAppointment = () => {
-  $('.edit').on('click', function (event) {
+  $('.edit-appointment').on('click', function (event) {
     const index = $(event.target).attr('data-id')
     appointmentsApi.getAppointment(index).then(function (data) {
-      const appointmentName = data.appointment.name
-      const licenseNumber = data.appointment.license_number
-      console.log('license number is ', licenseNumber)
-      const breed = data.appointment.breed
-      console.log('breed is ', breed)
-      const insuranceInfo = data.appointment.insurance_info
-      console.log('insurance info  ', insuranceInfo)
-      const vet = data.appointment.vet
-      console.log('vet  ', vet)
+      data.appointment.time = moment(data.appointment.time).format('HH:mm:ss')
+      const appointmentDate = data.appointment.date
+      const appointmentTime = data.appointment.time
+      const weight = data.appointment.weight
+      const description = data.appointment.description
+      const cost = data.appointment.cost
+      const notes = data.appointment.notes
       const id = data.appointment.id
-      console.log('id  ', id)
+      const petId = data.appointment.pet_id
       store.appointmentId = data.appointment.id
       $('data-index').val(id)
-      $("input[name='appointment[name]'").val(appointmentName)
-      $("input[name='appointment[license_number]'").val(licenseNumber)
-      $("input[name='appointment[breed]'").val(breed)
-      $("input[name='appointment[insurance_info]'").val(insuranceInfo)
-      $("input[name='appointment[vet]'").val(vet)
+      $("input[name='appointment[date]'").val(appointmentDate)
+      $("input[name='appointment[time]'").val(appointmentTime)
+      $("input[name='appointment[weight]'").val(weight)
+      $("input[name='appointment[description]'").val(description)
+      $("input[name='appointment[cost]'").val(cost)
+      $("input[name='appointment[notes]'").val(notes)
+      $("input[name='appointment[id]'").val(id)
+      $("input[name='appointment[pet_id]'").val(petId)
     })
   })
 }
 
 const onUpdateAppointment = () => {
   $('#update-appointment').on('submit', function (event) {
-    console.log('hitting onUpdateAppointment')
     event.preventDefault()
     const data = getFormFields(this)
     appointmentsApi.updateAppointment(data, store.appointmentId)
@@ -97,7 +99,6 @@ const onUpdateAppointment = () => {
 const addAppointmentHandlers = function () {
   $('#add-appointment').on('submit', onAddAppointment)
   $('#get-appointments').on('click', onGetAppointments)
-  $('#get-appointment').on('click', onGetAppointment)
 }
 
 module.exports = {

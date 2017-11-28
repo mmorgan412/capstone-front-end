@@ -225,7 +225,7 @@
             </div>
             <div class="form-group">
               <label for="weight" class="col-form-label">Weight (optional)</label>
-              <input type="text" name="appointment[weight]" class="form-control" id="weight"
+              <input type="text" name="appointment[weight]" class="form-control" id="appointment-weight"
                 placeholder="ex/ 15 lbs">
             </div>
             <div class="form-group">
@@ -243,7 +243,7 @@
               <input type="text" name="appointment[notes]" class="form-control" id="appointment-notes"
                 placeholder="Notes">
             </div>
-            <div class="form-group">
+            <div class="form-group" style="display: none">
               <label for="pet_id" class="col-form-label">Pet_ID</label>
               <input type="text" name="appointment[pet_id]" class="form-control" id="pet-id"
                 placeholder="PET_ID">
@@ -303,47 +303,77 @@
     </div>
   </div>
 
-  <!-- Pet Section -->
+  <!-- See More modal-->
 
-<button type="button" id="get-pets"> </button>
+  <div class="modal fade" id="edit-appointment-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Appointment:</h5>
+          <span aria-hidden="true"> </span>
+        </div>
+        <div class="modal-body">
+          <form id="update-appointment" class="update-appointment-form">
+            <div class="form-group">
+              <label for="date" class="col-form-label">Date<span style="color:red">*</span></label>
+              <input type="date" name="appointment[date]" class="form-control" id="appointment-date" placeholder="mm/dd/yyyy" required>
+            </div>
+            <div class="form-group">
+              <label for="Time" class="col-form-label">Time<span style="color:red">*</span></label>
+              <input type="time" name="appointment[time]" class="form-control" id="appointment-time" placeholder="hh:mm" required>
+            </div>
+            <div class="form-group">
+              <label for="weight" class="col-form-label">Weight (optional)</label>
+              <input type="text" name="appointment[weight]" class="form-control" id="appointment-weight"
+                placeholder="ex/ 15 lbs">
+            </div>
+            <div class="form-group">
+              <label for="description" class="col-form-label">Description (optional)</label>
+              <input type="text" name="appointment[description]" class="form-control" id="appointment-description"
+                placeholder="Appointment Description">
+            </div>
+            <div class="form-group">
+              <label for="cost" class="col-form-label">Cost (optional)</label>
+              <input type="number" name="appointment[cost]" class="form-control" id="appointment-cost"
+                placeholder="Cost">
+            </div>
+            <div class="form-group">
+              <label for="notes" class="col-form-label">Notes (optional)</label>
+              <input type="text" name="appointment[notes]" class="form-control" id="appointment-notes"
+                placeholder="Notes">
+            </div>
+            <div class="form-group" style="display: none">
+              <label for="pet_id" class="col-form-label">Pet_ID</label>
+              <input type="text" name="appointment[pet_id]" class="form-control" id="pet-id"
+                placeholder="PET_ID">
+            </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary modal-button" data-dismiss="modal">Close</button>
+          <button type="submit" name="submit" class="btn btn-primary modal-button">Update</button>
+        </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<button type="button" id="get-appointments"> </button>
+
+  <!-- hidden buttons -->
+
+  <button type="button" id="get-pets"> </button>
+
+  <button type="button" id="get-appointments"> Get Appointments </button>
+
+  <!-- Display Pet Section -->
+
 
 <!-- handlebars div -->
 <div class="row col-xs-12 container-fluid" id="pet-list">
 </div>
+
   <!-- Appointment Section -->
 
 <div class="row col-xs-12" id="appointment-list">
-<!-- <table class="table table-hover">
-    <thead>
-      <tr>
-        <th></th>
-        <th>Date</th>
-        <th>Time</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>10/11/2017</td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>10/11/2017</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td colspan="2">10/11/2017</td>
-        <td>@twitter</td>
-      </tr>
-    </tbody>
-  </table> -->
 </div>
 
 

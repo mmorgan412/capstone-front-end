@@ -1,8 +1,9 @@
 const showAppointmentsTemplate = require('../templates/appointments.handlebars')
+const moment = require('moment')
 
 const addAppointmentSuccess = function (data) {
   console.log('appointment success data is ', data)
-  console.log('data.appointments is ', data.appointments)
+  console.log('data.appointments is ', data.appointment)
   $('#get-appointments').trigger('click')
   $('#add-appointment-form').modal('hide')
   $('#add-appointment')[0].reset()
@@ -19,22 +20,27 @@ const deleteAppointmentSuccess = function () {
   $('#get-appointments').trigger('click')
 }
 
-const getAppointmentSuccess = function (data) {
-  console.log('data is ', data)
+const getAppointmentsSuccess = function (data) {
+  data.appointments.map(result => {
+    result.time = moment(result.time).format('LT')
+    result.date = moment(result.date).format('L')
+    return result
+  })
   const showAppointmentHtml = showAppointmentsTemplate(data)
   $('#appointment-list').html(showAppointmentHtml)
+  $('[data-toggle="popover"]').popover()
 }
 
 const updateAppointmentSuccess = function (data) {
   $('#edit-appointment-modal').modal('hide')
   $('#update-appointment')[0].reset()
-  getAppointmentSuccess(data)
+  getAppointmentsSuccess(data)
 }
 
 module.exports = {
   addAppointmentSuccess,
   addAppointmentFailure,
-  getAppointmentSuccess,
+  getAppointmentsSuccess,
   deleteAppointmentSuccess,
   updateAppointmentSuccess
   // addAppointmentFailure,

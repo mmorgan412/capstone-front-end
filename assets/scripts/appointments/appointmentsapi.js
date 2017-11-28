@@ -14,9 +14,10 @@ const createAppointment = function (data) {
   })
 }
 
-const getAppointments = function () {
+const getAppointments = function (petId) {
+  console.log('petId is ', petId)
   return $.ajax({
-    url: config.apiOrigin + '/appointments',
+    url: config.apiOrigin + '/appointments?pet_id=' + petId,
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -56,22 +57,21 @@ const deleteAppointment = function (data) {
     }
   })
 }
-
-const searchAppointments = function (data) {
-  return $.ajax({
-    url: config.apiOrigin + '/appointments?rating=' + data,
-    method: 'GET',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    }
-  })
-}
+//
+// const searchAppointments = function (data) {
+//   return $.ajax({
+//     url: config.apiOrigin + '/appointments?rating=' + data,
+//     method: 'GET',
+//     headers: {
+//       Authorization: 'Token token=' + store.user.token
+//     }
+//   })
+// }
 
 module.exports = {
   createAppointment,
-  getAppointment,
   getAppointments,
   updateAppointment,
   deleteAppointment,
-  searchAppointments
+  getAppointment
 }

@@ -1,5 +1,6 @@
 const showPetsTemplate = require('../templates/pet-listing.handlebars')
 const showPetTemplate = require('../templates/one-pet.handlebars')
+const store = require('../store')
 
 const addPetSuccess = function (data) {
   console.log('pet success data is ', data)
@@ -37,6 +38,9 @@ const getPetSuccess = function (data) {
   console.log('data is ', data)
   const showPetHtml = showPetTemplate(data)
   $('#pet-list').html(showPetHtml)
+  store.pets = data.pet
+  console.log(data.pet)
+  console.log(store.pets)
 }
 
 const updatePetSuccess = function (data) {
