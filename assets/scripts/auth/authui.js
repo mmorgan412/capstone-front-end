@@ -93,6 +93,10 @@ const initializeForm = () => {
   $('#get-pets').hide()
   $('#get-appointments').hide()
   $('#new-appointment').hide()
+  $('#pet-list').hide()
+  $('#appointment-list').hide()
+  $('#pet-dropdown').hide()
+  $('#pets-dropdown-link').hide()
 }
 
 const signOutSuccess = () => {

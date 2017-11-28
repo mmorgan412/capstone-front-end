@@ -7,9 +7,6 @@ const addAppointmentSuccess = function (data) {
   $('#get-appointments').trigger('click')
   $('#add-appointment-form').modal('hide')
   $('#add-appointment')[0].reset()
-  // window.setTimeout(function () {
-  //   $('#add-message').fadeOut()
-  // }, 3000)
 }
 
 const addAppointmentFailure = function () {
@@ -26,9 +23,16 @@ const getAppointmentsSuccess = function (data) {
     result.time = moment(result.time, 'HH:mm').format('LT')
     return result
   })
-  const showAppointmentHtml = showAppointmentsTemplate(data)
-  $('#appointment-list').html(showAppointmentHtml)
-  $('[data-toggle="popover"]').popover()
+  console.log('data.appointments.length', data.appointments.length)
+  if (data.appointments.length > 0) {
+    const showAppointmentHtml = showAppointmentsTemplate(data)
+    $('#appointment-list').html(showAppointmentHtml)
+    $('[data-toggle="popover"]').popover()
+    $('#appointment-list').show()
+  } else {
+    $('#appointment-list').show()
+    $('#appointment-list').append('You currently have no appointments.')
+  }
 }
 
 const updateAppointmentSuccess = function (data) {

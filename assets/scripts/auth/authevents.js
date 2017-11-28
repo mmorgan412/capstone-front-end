@@ -67,6 +67,18 @@ const addAuthHandlers = function () {
   $('.close-modal').on('click', function () {
     $('#sign-in').trigger('reset')
   })
+  $('.close-modal').on('click', function () {
+    $('#add-pet').trigger('reset')
+  })
+  $('.close-modal').on('click', function () {
+    $('#add-appointment').trigger('reset')
+  })
+  $('.close-modal').on('click', function () {
+    $('#update-pet').trigger('reset')
+  })
+  $('.close-modal').on('click', function () {
+    $('#update-appointment').trigger('reset')
+  })
 }
 
 module.exports = {

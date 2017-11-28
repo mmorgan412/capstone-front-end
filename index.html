@@ -28,13 +28,20 @@
         <li>
            <p class="navbar-text"></p>
          </li>
-        <li class="dropdown nav-links">
+        <li class="dropdown nav-links" id="pets-dropdown-link">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Pets
             <span class="caret"></span></a>
             <ul class="dropdown-menu" id="pets-dropdown">
                 <!-- pets-dropdown handlebars -->
             </ul>
-          </li>
+        </li>
+
+        <li class="dropdown nav-links" id="pet-dropdown">
+
+                <!-- pet-dropdown handlebars -->
+
+        </li>
+
         <li>
           <a href="#" class="nav-links" id='new-appointment' data-toggle="modal" data-target="#add-appointment-form">New Appointment</a>
         </li>
@@ -298,7 +305,7 @@
                 placeholder="Vet information">
             </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary modal-button" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary modal-button close-modal" data-dismiss="modal">Close</button>
           <button type="submit" name="submit" class="btn btn-primary modal-button">Update</button>
         </div>
         </form>
@@ -352,7 +359,7 @@
                 placeholder="PET_ID">
             </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary modal-button" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary modal-button close-modal" data-dismiss="modal">Close</button>
           <button type="submit" name="submit" class="btn btn-primary modal-button">Update</button>
         </div>
         </form>
@@ -366,7 +373,7 @@
 
   <button type="button" id="get-pets"> </button>
 
-  <button type="button" id="get-appointments"> Get Appointments </button>
+  <button type="button" id="get-appointments"> </button>
 
   <!-- Display Pet Section -->
 
