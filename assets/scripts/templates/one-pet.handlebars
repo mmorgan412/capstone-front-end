@@ -1,26 +1,14 @@
 
-    <h2>{{pet.name}}</h2>
-
-    <div class="grid col-sm-6 col-md-3">
-         <div class="thumbnail">
-
-                 <h4><a href="#" class="hb-buttons thumbnail-images contextDisplay" data-trigger="focus" data-toggle="popover" title="Image Properties" data-html="true" data-content="Uploader: {{upload.ownerEmail}}<br />Date Created: {{upload.createdAt}}<br />Last Updated: {{upload.updatedAt}}<br />Description: {{upload.description}}">{{upload.title}}</a></h4>
-
-                 <img src="{{upload.url}}" onerror=this.src="https://i.imgur.com/TZljVDd.jpg">
-                 <!-- <p>{{upload.tags}}</p> -->
-                <!-- <p>Uploader: {{upload.ownerEmail}}</p> -->
-                 {{#if upload.tags}}
-                 <p>
-                 {{#each upload.tags as |tag|}}
-                 {{tag}}
-                 {{/each}}
-                 </p>
-                 {{/if}}
-                 <a href="{{upload.url}}" class="hb-buttons download-button" download="testit">Download</a>
-                 <div class="edit-div"><button data-id="{{upload.id}}" type="button" class="remove btn edit-modal-buttons col-xs-6">Remove</button></div>
-                 <div class="edit-div editButton"><button data-toggle="modal" class="edit btn edit-modal-buttons col-xs-6"
-                 data-target="#edit-upload-modal" data-id="{{upload.id}}" type="button">Update</button>
-                 </div>
-
-          </div>
+      <div class="col-sm-3 col-md-6">
+        <div class="thumbnail">
+          <h4><a href="#" class="hb-buttons thumbnail-images contextDisplay" data-trigger="focus" data-toggle="popover" title="Image Properties" data-html="true"></a></h4>
+          <img src="https://i.imgur.com/aeeQgDv.jpg" onerror=this.src="https://i.imgur.com/TZljVDd.jpg">
+        </div>
+      </div>
+      <div class="grid col-sm-3 col-md-6">
+        <h2>{{pet.name}}</h2>
+        <p>Breed:  {{pet.breed}}</p>
+        <p>License Number:  {{pet.license_number}}</p>
+        <p>Insurance Info:  {{pet.insurance_info}}</p>
+        <p>Vet:  {{pet.vet}}</p>
       </div>

@@ -3,7 +3,6 @@ const showPetTemplate = require('../templates/one-pet.handlebars')
 const store = require('../store')
 const showPetsDropdownTemplate = require('../templates/pets-dropdown.handlebars')
 const showPetDropdownTemplate = require('../templates/pet-dropdown.handlebars')
-const petsEvents = require('./petsevents')
 
 const addPetSuccess = function (data) {
   console.log('pet success data is ', data)
@@ -38,6 +37,7 @@ const deletePetSuccess = function () {
 }
 
 const getPetSuccess = function (data) {
+  console.log('data is data', data)
   const showPetHtml = showPetTemplate(data)
   $('#pet-list').html(showPetHtml)
   store.pets = data.pet
