@@ -42,18 +42,10 @@ const onChangePassword = function (event) {
     .catch(authui.changePasswordFailure)
 }
 
-const onSignOut = function (event) {
-  event.preventDefault()
-  authapi.signOut()
-    .then(authui.signOutSuccess)
-    .catch(authui.signOutFailure)
-}
-
 const addAuthHandlers = function () {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
-  $('#sign-out-link').on('click', onSignOut)
   $('#sign-in-form').on('focus', onSignInFormShow)
   $('#sign-up-form').on('focus', onSignUpFormShow)
   $('#sign-up-form').trigger('reset')

@@ -1,6 +1,9 @@
 'use strict'
 
 const store = require('../store')
+const showNavbarUserTemplate = require('../templates/navbar-user.handlebars'
+)
+const authapi = require('./authapi')
 
 const alertCallerAuthSuccess = (alertLocation, alertMessage) => {
   $('#' + alertLocation).addClass('alert alert-success').html(alertMessage)
@@ -39,6 +42,19 @@ const signUpFailure = () => {
   failureAuthShake('sign-up-form')
 }
 
+const showUserDropdown = (response) => {
+  const showUserHtml = showNavbarUserTemplate({ user: response.user })
+  $('#user-dropdown').html(showUserHtml)
+}
+
+const onSignOut = function (event) {
+  console.log('hitting onSignOut')
+  event.preventDefault()
+  authapi.signOut()
+    .then(signOutSuccess)
+    .catch(signOutFailure)
+}
+
 const signInSuccess = (response) => {
   $('#sign-in-message').text('Sign In to Load Files')
   $('#sign-in-email').removeData()
@@ -46,12 +62,10 @@ const signInSuccess = (response) => {
   $('#sign-in-form').modal('hide')
   $('#sign-in-link').hide()
   $('#sign-up-link').hide()
-  $('#sign-out-link').show()
   $('#change-password-link').show()
   $('#create-ads-link').show()
   $('#manage-ads-link').show()
-  $('.navbar-text').show()
-  $('.navbar-text').text(response.user.email)
+  showUserDropdown(response)
   // Used to clear out login data
   $('#sign-in-form').on('hidden.bs.modal', function () {
     $(this).find('form').trigger('reset')
@@ -59,6 +73,7 @@ const signInSuccess = (response) => {
   store.user = response.user
   $('#get-pets').trigger('click')
   alertCallerAuthSuccess('frontSuccess', 'Sign-In Success')
+  $('#sign-out-link').on('click', onSignOut)
 }
 
 const signInFailure = () => {
@@ -81,14 +96,10 @@ const changePasswordFailure = () => {
 }
 
 const initializeForm = () => {
-  $('#sign-out').hide()
-  $('#sign-out-link').hide()
-  $('#change-password-link').hide()
   $('#sign-in-link').show()
   $('#sign-up-link').show()
   $('#sign-in-message').text('Please Sign In To Get Started')
   $('#sign-in-form').modal('show')
-  $('.navbar-text').hide()
   store.user = null
   $('#get-pets').hide()
   $('#get-appointments').hide()
