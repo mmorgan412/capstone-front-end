@@ -7,10 +7,12 @@ const addAppointmentSuccess = function (data) {
   $('#get-appointments').trigger('click')
   $('#add-appointment-form').modal('hide')
   $('#add-appointment')[0].reset()
+  $('#add-appt-fail-message').hide()
 }
 
 const addAppointmentFailure = function () {
-  console.log('add Failure')
+  $('#add-appt-fail-message').show()
+  $('#add-appt-fail-message').text('Sorry there was an issue adding your appointment.  Please try again.')
 }
 
 const deleteAppointmentSuccess = function () {
@@ -23,7 +25,6 @@ const getAppointmentsSuccess = function (data) {
     result.time = moment(result.time, 'HH:mm').format('LT')
     return result
   })
-  console.log('data.appointments.length', data.appointments.length)
   if (data.appointments.length > 0) {
     const showAppointmentHtml = showAppointmentsTemplate(data)
     $('#appointment-list').html(showAppointmentHtml)
@@ -39,6 +40,12 @@ const updateAppointmentSuccess = function (data) {
   $('#edit-appointment-modal').modal('hide')
   $('#update-appointment')[0].reset()
   $('#get-appointments').trigger('click')
+  $('#edit-appt-fail-message').hide()
+}
+
+const updateAppointmentFailure = function () {
+  $('#edit-appt-fail-message').show()
+  $('#edit-appt-fail-message').text('Sorry there was an issue updating your appiontment.  Please try again.')
 }
 
 module.exports = {
@@ -46,6 +53,6 @@ module.exports = {
   addAppointmentFailure,
   getAppointmentsSuccess,
   deleteAppointmentSuccess,
-  updateAppointmentSuccess
-  // addAppointmentFailure,
+  updateAppointmentSuccess,
+  updateAppointmentFailure
 }

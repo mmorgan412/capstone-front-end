@@ -7,12 +7,15 @@ const authui = require('./authui')
 const onSignInFormShow = function (event) {
   event.preventDefault()
   $('#sign-up-form').modal('hide')
+  $('#sign-up-fail-message').hide()
+  $('#sign-up').trigger('reset')
 }
 
 const onSignUpFormShow = function (event) {
-  console.log('hittng onSignUpFormShow')
   event.preventDefault()
   $('#sign-in-form').modal('hide')
+  $('#sign-in-fail-message').hide()
+  $('#sign-in').trigger('reset')
 }
 
 const onSignUp = function (event) {
@@ -64,15 +67,19 @@ const addAuthHandlers = function () {
   })
   $('.close-modal').on('click', function () {
     $('#add-pet').trigger('reset')
+    $('#add-pet-fail-message').hide()
   })
   $('.close-modal').on('click', function () {
     $('#add-appointment').trigger('reset')
+    $('#add-appt-fail-message').hide()
   })
   $('.close-modal').on('click', function () {
     $('#update-pet').trigger('reset')
+    $('#edit-pet-fail-message').hide()
   })
   $('.close-modal').on('click', function () {
     $('#update-appointment').trigger('reset')
+    $('#edit-appt-fail-message').hide()
   })
 }
 

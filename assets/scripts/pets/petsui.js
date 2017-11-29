@@ -6,18 +6,18 @@ const showPetDropdownTemplate = require('../templates/pet-dropdown.handlebars')
 const showPetsMessageTemplate = require('../templates/landing-page.handlebars')
 
 const addPetSuccess = function (data) {
-  console.log('pet success data is ', data)
-  console.log('data.pets is ', data.pets)
   $('#get-pets').trigger('click')
   $('#add-pet-form').modal('hide')
   $('#add-pet')[0].reset()
   $('#appointment-list').hide()
   $('#pet-dropdown').hide()
   $('#landing-page-message').hide()
+  $('#add-pet-fail-message').hide()
 }
 
 const addPetFailure = function () {
-  console.log('add Failure')
+  $('#add-pet-fail-message').show()
+  $('#add-pet-fail-message').text('There was an issue adding your pet.  Please try again.')
 }
 
 const getPetsSuccess = function (data) {
@@ -50,7 +50,6 @@ const deletePetSuccess = function () {
 }
 
 const getPetSuccess = function (data) {
-  console.log('petSuccess data is ', data)
   const showPetHtml = showPetTemplate(data)
   $('#pet-list').html(showPetHtml)
   store.pets = data.pet
@@ -63,11 +62,17 @@ const getPetSuccess = function (data) {
 }
 
 const updatePetSuccess = (data) => {
+  $('#edit-pet-fail-message').hide()
   $('#edit-pet-modal').modal('hide')
   $('#edit-pet-modal').on('hidden.bs.modal', function () {
     $(this).val('').end()
   })
   return data
+}
+
+const updatePetFailure = function () {
+  $('#edit-pet-fail-message').show()
+  $('#edit-pet-fail-message').text('Sorry there was an issue updating your pet.  Please try again.')
 }
 
 module.exports = {
@@ -76,6 +81,6 @@ module.exports = {
   getPetsSuccess,
   getPetSuccess,
   deletePetSuccess,
-  updatePetSuccess
-  // addPetFailure,
+  updatePetSuccess,
+  updatePetFailure
 }
