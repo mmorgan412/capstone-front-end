@@ -5,41 +5,18 @@ const showNavbarUserTemplate = require('../templates/navbar-user.handlebars'
 )
 const authapi = require('./authapi')
 
-const alertCallerAuthSuccess = (alertLocation, alertMessage) => {
-  $('#' + alertLocation).addClass('alert alert-success').html(alertMessage)
-  setTimeout(function () {
-    $('#' + alertLocation).removeClass('alert alert-success').html('')
-  }, 1500)
-}
-
-const alertCallerAuthFailure = (alertLocation, alertMessage) => {
-  $('#' + alertLocation).addClass('alert alert-danger').html(alertMessage)
-  setTimeout(function () {
-    $('#' + alertLocation).removeClass('alert alert-danger').html('')
-  }, 1500)
-}
-
-const failureAuthShake = (modalTarget) => {
-  $('#' + modalTarget).addClass('shake')
-  setTimeout(function () {
-    $('#' + modalTarget).removeClass('shake')
-  }, 1500)
-}
-
 const signUpSuccess = (data) => {
-  console.log('hitting sign up success')
+  $('#sign-up-fail-message').hide()
   $('#sign-up-form').modal('hide')
   // Used to clear out login data
   $('#sign-up-form').on('hidden.bs.modal', function () {
     $(this).find('form').trigger('reset')
   })
-  alertCallerAuthSuccess('frontSuccess', 'Sign-Up Success')
 }
 
 const signUpFailure = () => {
-  console.log('hitting sign up failure')
-  alertCallerAuthFailure('frontError', 'Sign-Up Failure')
-  failureAuthShake('sign-up-form')
+  $('#sign-up-fail-message').show()
+  $('#sign-up-fail-message').text('Sorry there was an issue with sign-up.  Please try again.')
 }
 
 const showUserDropdown = (response) => {
@@ -48,7 +25,6 @@ const showUserDropdown = (response) => {
 }
 
 const onSignOut = function (event) {
-  console.log('hitting onSignOut')
   event.preventDefault()
   authapi.signOut()
     .then(signOutSuccess)
@@ -65,6 +41,7 @@ const signInSuccess = (response) => {
   $('#change-password-link').show()
   $('#create-ads-link').show()
   $('#manage-ads-link').show()
+  $('#sign-in-fail-message').hide()
   showUserDropdown(response)
   // Used to clear out login data
   $('#sign-in-form').on('hidden.bs.modal', function () {
@@ -72,27 +49,27 @@ const signInSuccess = (response) => {
   })
   store.user = response.user
   $('#get-pets').trigger('click')
-  alertCallerAuthSuccess('frontSuccess', 'Sign-In Success')
   $('#sign-out-link').on('click', onSignOut)
+  $('#user-dropdown').show()
 }
 
 const signInFailure = () => {
-  alertCallerAuthFailure('frontError', 'Sign-In Failure')
-  failureAuthShake('sign-in-form')
+  $('#sign-in-fail-message').show()
+  $('#sign-in-fail-message').text('Sorry there was an issue signing in.  Please try again.')
 }
 
 const changePasswordSuccess = () => {
+  $('#change-password-fail-message').hide()
   $('#change-password-form').modal('hide')
   // Used to clear out login data
   $('#change-password-form').on('hidden.bs.modal', function () {
     $(this).find('form').trigger('reset')
   })
-  alertCallerAuthSuccess('frontSuccess', 'Change Password Success')
 }
 
 const changePasswordFailure = () => {
-  alertCallerAuthFailure('frontError', 'Change Password Failure')
-  failureAuthShake('change-password-form')
+  $('#change-password-fail-message').show()
+  $('#change-password-fail-message').text('Sorry there was an issue changing your password. Please try again.')
 }
 
 const initializeForm = () => {
@@ -108,15 +85,14 @@ const initializeForm = () => {
   $('#appointment-list').hide()
   $('#pet-dropdown').hide()
   $('#pets-dropdown-link').hide()
+  $('#user-dropdown').hide()
 }
 
 const signOutSuccess = () => {
   initializeForm()
-  alertCallerAuthSuccess('frontSuccess', 'Sign-Out Success')
 }
 
 const signOutFailure = () => {
-  alertCallerAuthFailure('frontError', 'Sign-Out Failure')
 }
 
 module.exports = {

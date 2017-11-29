@@ -52,12 +52,15 @@ const addAuthHandlers = function () {
   authui.initializeForm()
   $('.close-modal').on('click', function () {
     $('#change-password').trigger('reset')
+    $('#change-password-fail-message').hide()
   })
   $('.close-modal').on('click', function () {
     $('#sign-up').trigger('reset')
+    $('#sign-up-fail-message').hide()
   })
   $('.close-modal').on('click', function () {
     $('#sign-in').trigger('reset')
+    $('#sign-in-fail-message').hide()
   })
   $('.close-modal').on('click', function () {
     $('#add-pet').trigger('reset')

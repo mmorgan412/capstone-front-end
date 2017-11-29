@@ -68,6 +68,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="sign-up-message">Sign Up</h5>
+          <h5 id="sign-up-fail-message" style="color: red"></h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -106,6 +107,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="sign-in-message"></h5>
+          <h5 id="sign-in-fail-message" style="color: red"></h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           </button>
         </div>
@@ -117,7 +119,7 @@
               </div>
               <div class="form-group">
               <label for="sign-in-password" class="col-form-label">Password</label>
-              <input type="password" name="credentials[password]" class="form-control" id="sign-in-password" placeholder="Password" required>
+              <input type="password" name="credentials[password]" class="form-control" id="sign-in-password" placeholder="Password" maxlength="30" required>
             </div>
             <div class="modal-footer">
             <li class="footer-message">
@@ -138,6 +140,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="change-password-message">Change Password</h5>
+          <h5 id="chnage-password-fail-message" style="color: red"></h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -146,11 +149,11 @@
           <form id="change-password">
             <div class="form-group">
               <label for="old-password" class="col-form-label">Current Password</label>
-              <input type="password" name="passwords[old]" class="form-control" id="change-password-old" placeholder="Old Password" required>
+              <input type="password" name="passwords[old]" class="form-control" id="change-password-old" placeholder="Old Password" maxlength="30" required>
             </div>
             <div class="form-group">
               <label for="new-password" class="col-form-label">New Password</label>
-              <input type="password" name="passwords[new]" class="form-control" id="change-password-new" placeholder="New Password" required>
+              <input type="password" name="passwords[new]" class="form-control" id="change-password-new" placeholder="New Password" maxlength="30" required>
             </div>
             <div class="modal-footer">
           <button type="button" class="btn btn-info modal-button close-modal" data-dismiss="modal">Close</button>
@@ -179,31 +182,31 @@
           <form id="add-pet">
             <div class="form-group">
               <label for="pets-name" class="col-form-label">Pet's Name<span style="color:red">*</span></label>
-              <input type="text" name="pet[name]" class="form-control" id="pets-name-field" placeholder="Name of Pet" required>
+              <input type="text" name="pet[name]" class="form-control" id="pets-name-field" placeholder="Name of Pet" maxlength="80" required>
             </div>
             <div class="form-group">
               <label for="breed" class="col-form-label">Breed (optional)</label>
-              <input type="text" name="pet[breed]" class="form-control" id="breed" placeholder="Breed">
+              <input type="text" name="pet[breed]" class="form-control" id="breed" placeholder="Breed" maxlength="80">
             </div>
             <div class="form-group">
               <label for="license-number" class="col-form-label">License Number (optional)</label>
               <input  type="text" name="pet[license_number]" class="form-control" id="License-number"
-                placeholder="license number">
+                placeholder="license number" maxlength="80">
             </div>
             <div class="form-group">
               <label for="insurance-info" class="col-form-label">Insurance Info (optional)</label>
               <input  type="text" name="pet[insurance_info]" class="form-control" id="insurance-info"
-                placeholder="Insurance information">
+                placeholder="Insurance information" maxlength="80">
             </div>
             <div class="form-group">
               <label for="vet-info" class="col-form-label">Vet Info (optional)</label>
               <input  type="text" name="pet[vet]" class="form-control" id="vet-info"
-                placeholder="Vet information">
+                placeholder="Vet information" maxlength="80">
             </div>
             <div class="form-group">
               <label for="url-img" class="col-form-label">Image URL (optional)</label>
               <input  type="text" name="pet[url]" class="form-control" id="pet-url"
-                placeholder="Image URL">
+                placeholder="Image URL" maxlength="80">
             </div>
 
 
@@ -240,30 +243,30 @@
             <div class="form-group">
               <label for="weight" class="col-form-label">Weight in Pounds (optional)</label>
               <input type="text" name="appointment[weight]" class="form-control" id="appointment-weight"
-                placeholder="ex/ 15 lbs">
+                placeholder="example: 15 lbs" maxlength="80">
             </div>
             <div class="form-group">
               <label for="description" class="col-form-label">Description (optional)</label>
               <input type="text" name="appointment[description]" class="form-control" id="appointment-description"
-                placeholder="Appointment Description">
+                placeholder="Appointment Description" maxlength="150">
             </div>
             <div class="form-group">
               <label for="cost" class="col-form-label">Cost (optional)</label>
               <div class="input-group">
                 <span class="input-group-addon">$</span>
                 <input type="number" step="0.01" name="appointment[cost]" class="form-control" id="appointment-cost"
-                  placeholder="Cost">
+                  placeholder="Cost" maxlength="80">
                 </div>
             </div>
             <div class="form-group">
               <label for="notes" class="col-form-label">Notes (optional)</label>
               <input type="text" name="appointment[notes]" class="form-control" id="appointment-notes"
-                placeholder="Notes">
+                placeholder="Notes" maxlength="300">
             </div>
             <div class="form-group" style="display: none">
               <label for="pet_id" class="col-form-label">Pet_ID</label>
               <input type="text" name="appointment[pet_id]" class="form-control" id="pet-id"
-                placeholder="PET_ID">
+                placeholder="PET_ID" maxlength="80">
             </div>
 
           <div class="modal-footer">
@@ -289,31 +292,31 @@
           <form id="update-pet" class="update-pet-form">
             <div class="form-group">
               <label for="pets-name" class="col-form-label">Pet's Name<span style="color:red">*</span></label>
-              <input type="text" name="pet[name]" class="form-control" id="pets-name-field" placeholder="Name of Pet" required>
+              <input type="text" name="pet[name]" class="form-control" id="pets-name-field" placeholder="Name of Pet" maxlength="80" required>
             </div>
             <div class="form-group">
               <label for="breed" class="col-form-label">Breed (optional)</label>
-              <input type="text" name="pet[breed]" class="form-control" id="breed" placeholder="Breed">
+              <input type="text" name="pet[breed]" class="form-control" id="breed" placeholder="Breed" maxlength="80">
             </div>
             <div class="form-group">
               <label for="license-number" class="col-form-label">License Number (optional)</label>
               <input  type="text" name="pet[license_number]" class="form-control" id="License-number"
-                placeholder="license number">
+                placeholder="license number" maxlength="80">
             </div>
             <div class="form-group">
               <label for="insurance-info" class="col-form-label">Insurance Info (optional)</label>
               <input  type="text" name="pet[insurance_info]" class="form-control" id="insurance-info"
-                placeholder="Insurance information">
+                placeholder="Insurance information" maxlength="80">
             </div>
             <div class="form-group">
               <label for="vet-info" class="col-form-label">Vet Info (optional)</label>
               <input  type="text" name="pet[vet]" class="form-control" id="vet-info"
-                placeholder="Vet information">
+                placeholder="Vet information" maxlength="80">
             </div>
             <div class="form-group">
               <label for="url-img" class="col-form-label">Image URL (optional)</label>
               <input  type="text" name="pet[url]" class="form-control" id="pet-url"
-                placeholder="Image URL">
+                placeholder="Image URL" maxlength="80">
             </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary modal-button close-modal" data-dismiss="modal">Close</button>
@@ -347,25 +350,25 @@
             <div class="form-group">
               <label for="weight" class="col-form-label">Weight in Pounds (optional)</label>
               <input type="text" name="appointment[weight]" class="form-control" id="appointment-weight"
-                placeholder="ex/ 15 lbs">
+                placeholder="example: 15 lbs" maxlength="80">
             </div>
             <div class="form-group">
               <label for="description" class="col-form-label">Description (optional)</label>
               <input type="text" name="appointment[description]" class="form-control" id="appointment-description"
-                placeholder="Appointment Description">
+                placeholder="Appointment Description" maxlength="150">
             </div>
             <div class="form-group">
               <label for="cost" class="col-form-label">Cost (optional)</label>
               <div class="input-group">
                 <span class="input-group-addon">$</span>
                 <input type="number" step="0.01" name="appointment[cost]" class="form-control" id="appointment-cost"
-                placeholder="Cost">
+                placeholder="Cost" maxlength="80">
               </div>
             </div>
             <div class="form-group">
               <label for="notes" class="col-form-label">Notes (optional)</label>
               <input type="text" name="appointment[notes]" class="form-control" id="appointment-notes"
-                placeholder="Notes">
+                placeholder="Notes" maxlength="300">
             </div>
             <div class="form-group" style="display: none">
               <label for="pet_id" class="col-form-label">Pet_ID</label>

@@ -13,6 +13,7 @@ const addPetSuccess = function (data) {
   $('#add-pet')[0].reset()
   $('#appointment-list').hide()
   $('#pet-dropdown').hide()
+  $('#landing-page-message').hide()
 }
 
 const addPetFailure = function () {

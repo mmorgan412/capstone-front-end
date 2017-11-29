@@ -72,6 +72,7 @@ const onEditPet = () => {
         const breed = data.pet.breed
         const insuranceInfo = data.pet.insurance_info
         const vet = data.pet.vet
+        const url = data.pet.url
         const id = data.pet.id
         store.petId = data.pet.id
         $('data-index').val(id)
@@ -80,6 +81,7 @@ const onEditPet = () => {
         $("input[name='pet[breed]'").val(breed)
         $("input[name='pet[insurance_info]'").val(insuranceInfo)
         $("input[name='pet[vet]'").val(vet)
+        $("input[name='pet[url]'").val(url)
       })
   })
 }
