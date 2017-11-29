@@ -1,4 +1,4 @@
-<table class="table table-hover">
+<table class="table table-hover text-center">
   <thead>
     <tr>
       <th></th>
@@ -15,20 +15,49 @@
       <th scope="row"></th>
       <td>{{appointment.date}}</td>
       <td>{{appointment.time}}</td>
-      <td>{{appointment.description}}</td>
+      <td>
+        {{#if appointment.description}}
+          {{appointment.description}}
+          {{else}}
+            Not Available
+          {{/if}}
       <td>
       <a href="#" class="hb-buttons thumbnail-images contextDisplay" data-trigger="focus" data-toggle="popover" title="Appointment" data-html="true"
-        data-content="<b>Date:</b> {{appointment.date}}<br/>
+        data-content=
+
+        "<b>Date:</b> {{appointment.date}}<br/>
         <b>Time:</b> {{appointment.time}}<br/>
-        <b>Cost:</b> ${{appointment.cost}}<br/>
-        <b>Weight:</b> {{appointment.weight}}<br/>
-        <b>Description:</b> {{appointment.description}}<br/>
-        <b>Notes:</b> {{appointment.notes}}">
+
+        {{#if appointment.cost}}
+          <b>Cost:</b> ${{appointment.cost}}<br/>
+        {{else}}
+          <b>Cost:</b> Not Available<br/>
+        {{/if}}
+
+        {{#if appointment.weight}}
+          <b>Weight:</b> {{appointment.weight}} lbs<br/>
+        {{else}}
+          <b>Weight:</b> Not Availble<br/>
+        {{/if}}
+
+        {{#if appointment.description}}
+          <b>Description:</b> {{appointment.description}}<br/>
+        {{else}}
+          <b>Description:</b> Not Available<br/>
+        {{/if}}
+
+
+        {{#if appointment.notes}}
+          <b>Notes:</b> {{appointment.notes}}
+        {{else}}
+          <b>Notes:</b> Not Available
+        {{/if}}" >
+
         See More
       </a>
       <button data-id="{{appointment.id}}" type="button"
-      class="remove-appointment">Remove</button>
-      <button data-id="{{appointment.id}}"type="button" class="edit-appointment" data-toggle="modal" data-target="#edit-appointment-modal">Update</button></td>
+      class="remove-appointment btn btn-outline-danger">Remove</button>
+      <button data-id="{{appointment.id}}"type="button" class="edit-appointment btn btn-warning" data-toggle="modal" data-target="#edit-appointment-modal">Update</button></td>
     </tr>
 
     {{/each}}

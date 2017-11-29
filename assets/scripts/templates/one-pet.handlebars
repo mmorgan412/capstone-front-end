@@ -2,13 +2,35 @@
       <div class="col-sm-3 col-md-6">
         <div class="thumbnail">
           <h4><a href="#" class="hb-buttons thumbnail-images contextDisplay" data-trigger="focus" data-toggle="popover" title="Image Properties" data-html="true"></a></h4>
-          <img src="https://i.imgur.com/aeeQgDv.jpg" onerror=this.src="https://i.imgur.com/TZljVDd.jpg">
+          <img src="{{pet.url}}" onerror=this.src="https://t4.ftcdn.net/jpg/01/80/09/95/240_F_180099575_xy59UxoDEfNH34iELATEVbrGvACCop7b.jpg">
         </div>
       </div>
       <div class="grid col-sm-3 col-md-6">
         <h2>{{pet.name}}</h2>
-        <p>Breed:  {{pet.breed}}</p>
-        <p>License Number:  {{pet.license_number}}</p>
-        <p>Insurance Info:  {{pet.insurance_info}}</p>
-        <p>Vet:  {{pet.vet}}</p>
+         {{#if pet.breed}}
+          <p>Breed:  {{pet.breed}}</p>
+          {{else}}
+          <p>Breed: Not Available</p>
+         {{/if}}
+
+
+         {{#if pet.license_number}}
+            <p>License Number:  {{pet.license_number}}</p>
+          {{else}}
+            <p>License Number: Not Available</p>
+         {{/if}}
+
+         {{#if pet.insurance_info}}
+            <p>Insurance Info:  {{pet.insurance_info}}</p>
+          {{else}}
+            <p>Insurance Info: Not Available</p>
+         {{/if}}
+
+         {{#if pet.vet}}
+          <p>Vet:  {{pet.vet}}</p>
+         {{else}}
+           <p>Vet: Not Available</p>
+         {{/if}}
+
+
       </div>

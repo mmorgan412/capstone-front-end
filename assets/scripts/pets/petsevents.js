@@ -54,9 +54,7 @@ const onGetPetDropdown = function (event) {
 
 const onDeletePet = (event) => {
   $('.remove').on('click', function (event) {
-    console.log('hitting onDeletePet beforepreventdefault')
     event.preventDefault()
-    console.log('hitting onDeletePet')
     const index = $(event.target).attr('data-id')
     petsApi.deletePet(index)
       .then(petsUi.deletePetSuccess)
@@ -70,7 +68,6 @@ const onEditPet = () => {
     petsApi.getPet(index)
       .then(function (data) {
         const petName = data.pet.name
-        console.log('pets name is ', petName)
         const licenseNumber = data.pet.license_number
         const breed = data.pet.breed
         const insuranceInfo = data.pet.insurance_info

@@ -1,10 +1,12 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+@import '~//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css';
 
 $aqua: #6bbaa7;
 $sunshine: #FBA100;
 $lavender: #6C648B;
 $dusty-rose: #B6A19E;
+$arvo: 'Arvo', serif;
 
 
 .modal-content {
@@ -27,8 +29,7 @@ $dusty-rose: #B6A19E;
 
 .nav-links {
   color: white;
-  font-family: fantasy;
-  font-weight: bold;
+  font-family: 'Arvo', serif;
 }
 
 .icon-bar {
@@ -53,6 +54,7 @@ $dusty-rose: #B6A19E;
 
 .navbar-brand {
   color: black;
+  font-family: $arvo;
 }
 
 .numberCircle {
@@ -90,4 +92,20 @@ $dusty-rose: #B6A19E;
 .thumbnail > img {
   width: 100%;
   height: 200px;
+}
+
+.centered-text {
+    margin: 0 auto;
+}
+
+.button-center {
+  display: inline-block;
+}
+
+th {
+  text-align: center;
+}
+
+h1 {
+  font-family: $arvo;
 }
