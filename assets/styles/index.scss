@@ -59,16 +59,16 @@ $arvo: 'Arvo', serif;
 
 .numberCircle {
   background: white;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, .4);
   border-radius: 100%;
   border: 6px solid $aqua;
-  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.46);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, .46);
   color: $aqua;
   display: table-cell;
   border-radius: 50%;
   width: 120px;
-  font-size: 32px;
-  margin: 20px;
+  font-size: 80px;
+  margin: 30px;
 }
 .numberCircle span {
     text-align: center;
@@ -108,4 +108,8 @@ th {
 
 h1 {
   font-family: $arvo;
+}
+
+li {
+  list-style-type: none;
 }

@@ -28,9 +28,8 @@ const getPetsSuccess = function (data) {
   $('#pets-dropdown').html(showPetsDropdownHtml)
   const showPetsHtml = showPetsTemplate({ pets: data.pets })
   $('#pet-list').html(showPetsHtml)
-  const noPets = 'Welcome!  Add a buddy to start!'
+  const noPets = 'Welcome!  Add a pet to start!'
   const hasPets = ''
-  console.log('data.pets is ', data.pets.length)
   if (data.pets.length === 0) {
     const showPetsMessageHtml = showPetsMessageTemplate({message: noPets})
     $('#landing-page-message').html(showPetsMessageHtml)
@@ -43,7 +42,6 @@ const getPetsSuccess = function (data) {
     const showPetsHtml = showPetsTemplate({ pets: data.pets })
     $('#pet-list').html(showPetsHtml)
   }
-  console.log('getPetsSuccess')
 }
 
 const deletePetSuccess = function () {
@@ -51,12 +49,10 @@ const deletePetSuccess = function () {
   $('#appointment-list').hide()
   $('#pet-dropdown').hide()
   $('#show-one-pet').hide()
-  console.log('deletePetSuccess')
 }
 
-const deletePetFailure = function (error) {
-  console.log('delete pet error', error)
-  console.log('deletePetFailure', deletePetFailure)
+const deletePetFailure = function () {
+  console.log('error with deletePet')
 }
 
 const getPetSuccess = function (data) {
@@ -71,7 +67,6 @@ const getPetSuccess = function (data) {
   $('#pet-dropdown').show()
   $('#landing-page-message').hide()
   $('#pet-list').hide()
-  console.log('getPetSuccess')
 }
 
 const updatePetSuccess = (data) => {
@@ -89,7 +84,7 @@ const updatePetFailure = function () {
 }
 
 const getPetsFailure = function () {
-  console.log('getPetsFailure', getPetsFailure)
+  console.log('error with getPets', getPetsFailure)
 }
 
 module.exports = {

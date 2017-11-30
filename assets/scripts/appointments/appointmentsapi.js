@@ -15,7 +15,6 @@ const createAppointment = function (data) {
 }
 
 const getAppointments = function (petId) {
-  console.log('petId is ', petId)
   return $.ajax({
     url: config.apiOrigin + '/appointments?pet_id=' + petId,
     method: 'GET',
@@ -26,8 +25,6 @@ const getAppointments = function (petId) {
 }
 
 const getAppointment = function (id) {
-  console.log('hitting getAppointment API')
-  console.log('id in API getAppointment is ', id)
   return $.ajax({
     url: config.apiOrigin + '/appointments/' + id,
     method: 'GET',
@@ -57,16 +54,6 @@ const deleteAppointment = function (data) {
     }
   })
 }
-//
-// const searchAppointments = function (data) {
-//   return $.ajax({
-//     url: config.apiOrigin + '/appointments?rating=' + data,
-//     method: 'GET',
-//     headers: {
-//       Authorization: 'Token token=' + store.user.token
-//     }
-//   })
-// }
 
 module.exports = {
   createAppointment,

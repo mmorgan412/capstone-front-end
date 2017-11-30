@@ -2,8 +2,6 @@ const showAppointmentsTemplate = require('../templates/appointments.handlebars')
 const moment = require('moment')
 
 const addAppointmentSuccess = function (data) {
-  console.log('appointment success data is ', data)
-  console.log('data.appointments is ', data.appointment)
   $('#get-appointments').trigger('click')
   $('#add-appointment-form').modal('hide')
   $('#add-appointment')[0].reset()

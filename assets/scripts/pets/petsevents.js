@@ -6,7 +6,6 @@ const petsUi = require('./petsui')
 const store = require('./../store.js')
 
 const onAddPet = function (event) {
-  console.log(event)
   event.preventDefault()
   const data = getFormFields(this)
   petsApi.createPet(data)
@@ -42,7 +41,6 @@ const onGetPet = function (event) {
 const onGetPetDropdown = function (event) {
   $('.pet-dropdown').on('click', function (event) {
     const index = $(event.target).attr('data-id')
-    console.log('index is ', index)
     petsApi.getPet(index)
       .then(petsUi.getPetSuccess)
       .then(onDeletePet)
@@ -62,7 +60,6 @@ const onDeletePet = () => {
 }
 
 const confirmDeletePet = (index) => {
-  console.log('confirm delete pet dinex', index)
   petsApi.deletePet(index)
     .then(petsUi.deletePetSuccess)
     .catch(petsUi.deletePetFailure)
