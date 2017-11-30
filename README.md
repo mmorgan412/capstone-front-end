@@ -1,4 +1,3 @@
-README TBD
 
 ## An embedded screenshot of the app
 
