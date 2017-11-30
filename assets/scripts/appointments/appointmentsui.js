@@ -23,6 +23,9 @@ const getAppointmentsSuccess = function (data) {
     result.time = moment(result.time, 'HH:mm').format('LT')
     return result
   })
+  data.appointments.sort(function (a, b) {
+    return Date.parse(b.date) - Date.parse(a.date)
+  })
   if (data.appointments.length > 0) {
     const showAppointmentHtml = showAppointmentsTemplate(data)
     $('#appointment-list').html(showAppointmentHtml)

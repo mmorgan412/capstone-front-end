@@ -1,5 +1,5 @@
 
-## An embedded screenshot of the app
+![Image of PetKeeper]https://i.imgur.com/ZnvK1xe.png
 
 ## App
   https://mmorgan412.github.io/capstone-front-end/

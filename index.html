@@ -240,8 +240,11 @@
             </div>
             <div class="form-group">
               <label for="weight" class="col-form-label">Weight in Pounds (optional)</label>
-              <input type="number" name="appointment[weight]" class="form-control" id="appointment-weight"
-                placeholder="example: 15 lbs" maxlength="80">
+              <div class="input-group">
+                <input type="number" name="appointment[weight]" class="form-control" id="appointment-weight"
+                  placeholder="example: 15" maxlength="80">
+                  <span class="input-group-addon">lbs</span>
+              </div>
             </div>
             <div class="form-group">
               <label for="description" class="col-form-label">Description (optional)</label>
@@ -349,8 +352,11 @@
             </div>
             <div class="form-group">
               <label for="weight" class="col-form-label">Weight in Pounds (optional)</label>
-              <input type="number" name="appointment[weight]" class="form-control" id="appointment-weight"
-                placeholder="example: 15 lbs" maxlength="80">
+              <div class="input-group">
+                <input type="number" name="appointment[weight]" class="form-control" id="appointment-weight"
+                  placeholder="example: 15" maxlength="80">
+                <span class="input-group-addon">lbs</span>
+              </div>
             </div>
             <div class="form-group">
               <label for="description" class="col-form-label">Description (optional)</label>
@@ -436,7 +442,7 @@
         <h4 class="modal-title"></h4>
       </div>
       <div class="modal-body">
-        <p>Are you sure you want to delete this appointment?</p>
+        <p class="are-you-sure">Are you sure you want to delete this appointment?</p>
       </div>
       <div class="modal-footer">
         <button type="button" id="delete-appt-close-button" class="btn btn-outline-danger modal-button close-modal" data-dismiss="modal">Don't Delete</button>
@@ -459,11 +465,11 @@
             <h4 class="modal-title"></h4>
           </div>
           <div class="modal-body">
-            <p>Are you sure you want to delete this pet?</p>
+            <p class="are-you-sure" id="are-you-sure"></p>
           </div>
           <div class="modal-footer">
             <button type="button" id="delete-pet-close-button" class="btn btn-outline-danger modal-button close-modal" data-dismiss="modal">Don't Delete</button>
-            <button id="confirm-delete-pet" data-dismiss="modal" aria-label="Close" type="submit" name="submit" class="btn btn-warning modal-button">Yes! Delete</button>
+            <button id="confirm-delete-pet" data-dismiss="modal" aria-label="Close" type="button" name="button" class="btn btn-warning modal-button">Yes! Delete</button>
           </div>
         </div>
       </div>

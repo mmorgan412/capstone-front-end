@@ -4,6 +4,7 @@ const getFormFields = require(`../../../lib/get-form-fields`)
 const petsApi = require('./petsapi')
 const petsUi = require('./petsui')
 const store = require('./../store.js')
+const showPetsNameTemplate = require('../templates/delete-pet.handlebars')
 
 const onAddPet = function (event) {
   event.preventDefault()
@@ -51,11 +52,21 @@ const onGetPetDropdown = function (event) {
 }
 
 const onDeletePet = () => {
-  $('.remove').on('click', function (event) {
+  $('.remove').one('click', function (event) {
     const index = $(event.target).attr('data-id')
-    $('#confirm-delete-pet').one('click', function () {
-      confirmDeletePet(index)
-    })
+    const petName = (event.target.innerText).split(' ').pop()
+    const showPetNameHtml = showPetsNameTemplate({pet: petName})
+    $('#are-you-sure').html(showPetNameHtml)
+    confirmDeleteButton(index)
+    // $('#confirm-delete-pet').one('click', function () {
+    //   confirmDeletePet(index)
+    // })
+  })
+}
+
+const confirmDeleteButton = function (index) {
+  $('#confirm-delete-pet').one('click', function () {
+    confirmDeletePet(index)
   })
 }
 
@@ -106,6 +117,9 @@ const addPetHandlers = function () {
   $('#add-pet').on('submit', onAddPet)
   $('#get-pets').on('click', onGetPets)
   $('#get-pet').on('click', onGetPet)
+  $('#pet-delete-modal').on('hidden.bs.modal', function () {
+    $('#confirm-delete-pet').off('click')
+  })
 }
 
 module.exports = {

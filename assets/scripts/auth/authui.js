@@ -70,6 +70,7 @@ const changePasswordSuccess = () => {
 const changePasswordFailure = () => {
   $('#change-password-fail-message').show()
   $('#change-password-fail-message').text('Sorry there was an issue changing your password. Please try again.')
+  $('#change-password').trigger('reset')
 }
 
 const initializeForm = () => {

@@ -80,6 +80,9 @@ const onUpdateAppointment = () => {
 const addAppointmentHandlers = function () {
   $('#add-appointment').on('submit', onAddAppointment)
   $('#get-appointments').on('click', onGetAppointments)
+  $('#appointment-delete-modal').on('hidden.bs.modal', function () {
+    $('#confirm-delete-appt').off('click')
+  })
 }
 
 module.exports = {
