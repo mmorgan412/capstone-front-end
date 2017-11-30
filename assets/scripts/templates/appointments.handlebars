@@ -37,7 +37,7 @@
         {{#if appointment.weight}}
           <b>Weight:</b> {{appointment.weight}} lbs<br/>
         {{else}}
-          <b>Weight:</b> Not Availble<br/>
+          <b>Weight:</b> Not Available<br/>
         {{/if}}
 
         {{#if appointment.description}}
@@ -56,7 +56,7 @@
         See More
       </a>
       <button data-id="{{appointment.id}}" type="button"
-      class="remove-appointment btn btn-outline-danger">Remove</button>
+      class="remove-appointment btn btn-outline-danger" data-target="#appointment-delete-modal" data-toggle="modal">Remove</button>
       <button data-id="{{appointment.id}}"type="button" class="edit-appointment btn btn-warning" data-toggle="modal" data-target="#edit-appointment-modal">Update</button></td>
     </tr>
 

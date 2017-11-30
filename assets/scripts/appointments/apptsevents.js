@@ -11,8 +11,6 @@ const onAddAppointment = function (event) {
   const id = store.pets.id
   $("input[name='appointment[pet_id]'").val(id)
   const data = getFormFields(this)
-  console.log('on add appt data is ', data)
-  console.log('data.appointment.time is ', data.appointment.time)
   appointmentsApi.createAppointment(data)
     .then(appointmentsUi.addAppointmentSuccess)
     .catch(appointmentsUi.addAppointmentFailure)
@@ -28,34 +26,25 @@ const onGetAppointments = function (event) {
     .catch(appointmentsUi.getAppointmentsFailure)
 }
 
-// const onGetAppointment = function (event) {
-//   $('.numberCircle').on('click', function (event) {
-//     const index = $(event.target).attr('data-id')
-//     appointmentsApi.getAppointment(index)
-//       .then(appointmentsUi.getAppointmentSuccess)
-//       .then(onDeleteAppointment)
-//       .then(onEditAppointment)
-//       .then(onUpdateAppointment)
-//       .catch(appointmentsUi.getAppointmentFailure)
-//   })
-// }
-
 const onDeleteAppointment = (event) => {
   $('.remove-appointment').on('click', function (event) {
-    event.preventDefault()
     const index = $(event.target).attr('data-id')
-    appointmentsApi.deleteAppointment(index)
-      .then(appointmentsUi.deleteAppointmentSuccess)
-      .catch(appointmentsUi.deleteAppointmentFailure)
+    $('#confirm-delete-appt').on('click', function () {
+      confirmDelete(index)
+    })
   })
+}
+
+const confirmDelete = (index) => {
+  appointmentsApi.deleteAppointment(index)
+    .then(appointmentsUi.deleteAppointmentSuccess)
+    .catch(appointmentsUi.deleteAppointmentFailure)
 }
 
 const onEditAppointment = () => {
   $('.edit-appointment').on('click', function (event) {
     const index = $(event.target).attr('data-id')
     appointmentsApi.getAppointment(index).then(function (data) {
-      console.log('oneditappointment', data)
-      console.log('oneditappointmentaftermoment', data)
       const appointmentDate = data.appointment.date
       const appointmentTime = data.appointment.time
       const weight = data.appointment.weight
@@ -87,17 +76,6 @@ const onUpdateAppointment = () => {
       .catch(appointmentsUi.updateAppointmentFailure)
   })
 }
-
-// const searchAppointments = (event) => {
-//   event.preventDefault()
-//   const data = getFormFields(event.target)
-//   appointmentsApi.searchAppointments(data.appointment.rating)
-//     .then(appointmentsUi.searchAppointmentsSuccess)
-//     .then(deleteAppointment)
-//     .then(editAppointment)
-//     .then(updateAppointment)
-//     .catch(appointmentsUi.searchAppointmentsFailure)
-// }
 
 const addAppointmentHandlers = function () {
   $('#add-appointment').on('submit', onAddAppointment)

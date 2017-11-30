@@ -52,14 +52,20 @@ const onGetPetDropdown = function (event) {
   })
 }
 
-const onDeletePet = (event) => {
+const onDeletePet = () => {
   $('.remove').on('click', function (event) {
-    event.preventDefault()
     const index = $(event.target).attr('data-id')
-    petsApi.deletePet(index)
-      .then(petsUi.deletePetSuccess)
-      .catch(petsUi.deletePetFailure)
+    $('#confirm-delete-pet').one('click', function () {
+      confirmDeletePet(index)
+    })
   })
+}
+
+const confirmDeletePet = (index) => {
+  console.log('confirm delete pet dinex', index)
+  petsApi.deletePet(index)
+    .then(petsUi.deletePetSuccess)
+    .catch(petsUi.deletePetFailure)
 }
 
 const onEditPet = () => {

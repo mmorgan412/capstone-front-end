@@ -12,6 +12,7 @@ const addPetSuccess = function (data) {
   $('#appointment-list').hide()
   $('#pet-dropdown').hide()
   $('#add-pet-fail-message').hide()
+  $('#show-one-pet').hide()
 }
 
 const addPetFailure = function () {
@@ -25,6 +26,8 @@ const getPetsSuccess = function (data) {
   $('#landing-page-message').show()
   const showPetsDropdownHtml = showPetsDropdownTemplate({ pets: data.pets })
   $('#pets-dropdown').html(showPetsDropdownHtml)
+  const showPetsHtml = showPetsTemplate({ pets: data.pets })
+  $('#pet-list').html(showPetsHtml)
   const noPets = 'Welcome!  Add a buddy to start!'
   const hasPets = ''
   console.log('data.pets is ', data.pets.length)
@@ -40,17 +43,26 @@ const getPetsSuccess = function (data) {
     const showPetsHtml = showPetsTemplate({ pets: data.pets })
     $('#pet-list').html(showPetsHtml)
   }
+  console.log('getPetsSuccess')
 }
 
 const deletePetSuccess = function () {
   $('#get-pets').trigger('click')
   $('#appointment-list').hide()
   $('#pet-dropdown').hide()
+  $('#show-one-pet').hide()
+  console.log('deletePetSuccess')
+}
+
+const deletePetFailure = function (error) {
+  console.log('delete pet error', error)
+  console.log('deletePetFailure', deletePetFailure)
 }
 
 const getPetSuccess = function (data) {
   const showPetHtml = showPetTemplate(data)
-  $('#pet-list').html(showPetHtml)
+  $('#show-one-pet').show()
+  $('#show-one-pet').html(showPetHtml)
   store.pets = data.pet
   $('#get-appointments').trigger('click')
   $('#new-appointment').show()
@@ -58,6 +70,8 @@ const getPetSuccess = function (data) {
   $('#pet-dropdown').html(showPetDropdownHtml)
   $('#pet-dropdown').show()
   $('#landing-page-message').hide()
+  $('#pet-list').hide()
+  console.log('getPetSuccess')
 }
 
 const updatePetSuccess = (data) => {
@@ -74,12 +88,18 @@ const updatePetFailure = function () {
   $('#edit-pet-fail-message').text('Sorry there was an issue updating your pet.  Please try again.')
 }
 
+const getPetsFailure = function () {
+  console.log('getPetsFailure', getPetsFailure)
+}
+
 module.exports = {
   addPetSuccess,
   addPetFailure,
   getPetsSuccess,
   getPetSuccess,
+  getPetsFailure,
   deletePetSuccess,
+  deletePetFailure,
   updatePetSuccess,
   updatePetFailure
 }

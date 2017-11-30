@@ -6,5 +6,6 @@
 
 <ul class="dropdown-menu" id="pet-dropdown">
 <li><a class="pet-dropdown edit" href="#" data-id="{{pet.id}}" data-toggle="modal" data-target="#edit-pet-modal">Update</a></li>
-<li><a class="pet-dropdown remove" href="#" data-id="{{pet.id}}" >Remove</a></li>
+
+<li><a class="pet-dropdown remove" data-toggle="modal" data-target="#pet-delete-modal" href="#" data-id="{{pet.id}}" >Remove {{pet.name}}</a></li>
 </ul>

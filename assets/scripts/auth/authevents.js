@@ -19,7 +19,6 @@ const onSignUpFormShow = function (event) {
 }
 
 const onSignUp = function (event) {
-  console.log('hitting onSignUp authevents.js')
   event.preventDefault()
   const data = getFormFields(this)
   authapi.signUp(data)
