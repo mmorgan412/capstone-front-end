@@ -13,6 +13,7 @@ const addPetSuccess = function (data) {
   $('#pet-dropdown').hide()
   $('#add-pet-fail-message').hide()
   $('#show-one-pet').hide()
+  $('#new-appointment').hide()
 }
 
 const addPetFailure = function () {
@@ -49,6 +50,7 @@ const deletePetSuccess = function () {
   $('#appointment-list').hide()
   $('#pet-dropdown').hide()
   $('#show-one-pet').hide()
+  $('#new-appointment').hide()
 }
 
 const deletePetFailure = function () {
