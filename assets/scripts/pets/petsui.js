@@ -11,7 +11,6 @@ const addPetSuccess = function (data) {
   $('#add-pet')[0].reset()
   $('#appointment-list').hide()
   $('#pet-dropdown').hide()
-  $('#landing-page-message').hide()
   $('#add-pet-fail-message').hide()
 }
 
@@ -27,7 +26,7 @@ const getPetsSuccess = function (data) {
   const showPetsDropdownHtml = showPetsDropdownTemplate({ pets: data.pets })
   $('#pets-dropdown').html(showPetsDropdownHtml)
   const noPets = 'Welcome!  Add a buddy to start!'
-  const hasPets = 'Welcome Back!'
+  const hasPets = ''
   console.log('data.pets is ', data.pets.length)
   if (data.pets.length === 0) {
     const showPetsMessageHtml = showPetsMessageTemplate({message: noPets})

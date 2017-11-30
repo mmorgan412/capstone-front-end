@@ -86,6 +86,9 @@ const initializeForm = () => {
   $('#pet-dropdown').hide()
   $('#pets-dropdown-link').hide()
   $('#user-dropdown').hide()
+  $('#pet-list').val('')
+  $('#appointment-list').val('')
+  $('#landing-page-message').hide()
 }
 
 const signOutSuccess = () => {
