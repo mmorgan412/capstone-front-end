@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PetKeeper</title>
+  <script src="https://use.fontawesome.com/a8f7527cc6.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<!-- Used to collect navbar links and collapse them into menu when screen size is below 756px -->
+<nav class="navbar">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed navbar-brand" data-toggle="collapse" data-target="#nav-links">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">PetKeeper  <i class="fa fa-paw fa-1x" aria-hidden="true"></i></a>
+    </div>
+    <div class="collapse navbar-collapse" id="nav-links">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown nav-links" id="pets-dropdown-link">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Pets
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu" id="pets-dropdown">
+                <!-- pets-dropdown handlebars -->
+            </ul>
+        </li>
+        <li class="dropdown nav-links" id="pet-dropdown">
+          <!-- pet-dropdown handlebars -->
+        </li>
+        <li>
+          <a href="#" class="nav-links" id='new-appointment' data-toggle="modal" data-target="#add-appointment-form">New Appointment</a>
+        </li>
+        <li>
+          <a href="#" class="nav-links" id="sign-up-link" data-toggle="modal" data-target="#sign-up-form">Sign Up</a>
+        </li>
+        <li>
+          <a href="#" class="nav-links" id="sign-in-link" data-toggle="modal" data-target="#sign-in-form">Sign In</a>
+        </li>
+        <li class="dropdown nav-links" id="user-dropdown">
+            <!-- navbar-user handlebars -->
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<body class="container-fluid">
+
+  <!-- Sign up modal -->
+  <div class="modal fade" id="sign-up-form" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="sign-up-message">Sign Up</h5>
+          <h5 id="sign-up-fail-message" style="color: red"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="sign-up">
+            <div class="form-group">
+              <label for="sign-in-email" class="col-form-label">Email</label>
+              <input type="email" name="credentials[email]" class="form-control" id="sign-in-email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+              <label for="sign-in-password" class="col-form-label">Password</label>
+              <input type="password" name="credentials[password]" class="form-control" id="sign-in-password" placeholder="Password" required>
+            </div>
+            <div class="form-group">
+              <label for="sign-in-password" class="col-form-label">Confirm Password</label>
+              <input type="password" name="credentials[password_confirmation]" class="form-control" id="sign-up-password-confirmation"
+                placeholder="Confirm Password" required>
+            </div>
+
+          <div class="modal-footer">
+            <li class="footer-message">
+              <a href="#sign-up-form" id="sign-in-form-footer" data-toggle="modal" data-target="#sign-in-form">Already a member? Click here to sign in.</a>
+            </li>
+          <button type="button" id="sign-up-close-button" class="btn btn-outline-danger modal-button close-modal" data-dismiss="modal">Close</button>
+          <button type="submit" name="submit" class="btn btn-warning modal-button">Sign Up</button>
+        </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sign In Modal -->
+  <div class="modal fade" id="sign-in-form" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="sign-in-message"></h5>
+          <h5 id="sign-in-fail-message" style="color: red"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="sign-in">
+            <div class="form-group">
+              <label for="sign-in-email" class="col-form-label">Email</label>
+              <input type="email" name="credentials[email]" class="form-control" id="sign-in-email" placeholder="Email" required>
+              </div>
+              <div class="form-group">
+              <label for="sign-in-password" class="col-form-label">Password</label>
+              <input type="password" name="credentials[password]" class="form-control" id="sign-in-password" placeholder="Password" maxlength="30" required>
+            </div>
+            <div class="modal-footer">
+            <li class="footer-message">
+              <a href="#sign-in-form" id="sign-up-form-footer" data-toggle="modal" data-target="#sign-up-form">No account? Click here to sign up!</a>
+            </li>
+          <button type="button" class="btn btn-outline-danger modal-button close-modal" data-dismiss="modal">Close</button>
+          <button type="submit" name="submit" class="btn btn-warning modal-button">Sign In</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- Change Password Modal -->
+<div class="modal fade" id="change-password-form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="change-password-message">Change Password</h5>
+          <h5 id="change-password-fail-message" style="color: red"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="change-password">
+            <div class="form-group">
+              <label for="old-password" class="col-form-label">Current Password</label>
+              <input type="password" name="passwords[old]" class="form-control" id="change-password-old" placeholder="Old Password" maxlength="30" required>
+            </div>
+            <div class="form-group">
+              <label for="new-password" class="col-form-label">New Password</label>
+              <input type="password" name="passwords[new]" class="form-control" id="change-password-new" placeholder="New Password" maxlength="30" required>
+            </div>
+            <div class="modal-footer">
+          <button type="button" class="btn btn-outline-danger modal-button close-modal" data-dismiss="modal">Close</button>
+          <button type="submit" name="submit" class="btn btn-warning modal-button">Change Password</button>
+        </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="frontSuccess animated fadeInDown fadeOutUp col-xs-1 text-center" id="frontSuccess" data-notify-position="top-center"></div>
+  <div class="frontFailure animated fadeInDown fadeOutUp col-xs-1 text-center" id="frontError" data-notify-position="top-center"></div>
+
+  <!-- Add Pet Modal -->
+
+  <div class="modal fade" id="add-pet-form" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="add-pet-message">New Pet</h3>
+          <h5 id="add-pet-fail-message" style="color: red"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="add-pet">
+            <div class="form-group">
+              <label for="pets-name" class="col-form-label">Pet's Name<span style="color:red">*</span></label>
+              <input type="text" name="pet[name]" class="form-control" id="pets-name-field" placeholder="Name of Pet" maxlength="80" required>
+            </div>
+            <div class="form-group">
+              <label for="breed" class="col-form-label">Breed (optional)</label>
+              <input type="text" name="pet[breed]" class="form-control" id="breed" placeholder="Breed" maxlength="80">
+            </div>
+            <div class="form-group">
+              <label for="license-number" class="col-form-label">License Number (optional)</label>
+              <input  type="text" name="pet[license_number]" class="form-control" id="License-number"
+                placeholder="License number" maxlength="80">
+            </div>
+            <div class="form-group">
+              <label for="insurance-info" class="col-form-label">Insurance Info (optional)</label>
+              <input  type="text" name="pet[insurance_info]" class="form-control" id="insurance-info"
+                placeholder="Insurance information" maxlength="80">
+            </div>
+            <div class="form-group">
+              <label for="vet-info" class="col-form-label">Vet Info (optional)</label>
+              <input  type="text" name="pet[vet]" class="form-control" id="vet-info"
+                placeholder="Vet information" maxlength="80">
+            </div>
+            <div class="form-group">
+              <label for="url-img" class="col-form-label">Image URL (optional)</label>
+              <input  type="text" name="pet[url]" class="form-control" id="pet-url"
+                placeholder="Image URL" maxlength="80">
+            </div>
+
+
+          <div class="modal-footer">
+          <button type="button" id="sign-up-close-button" class="btn btn-outline-danger modal-button close-modal" data-dismiss="modal">Close</button>
+          <button type="submit" name="submit" class="btn btn-warning modal-button">Add Pet</button>
+        </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Appointment Modal -->
+
+  <div class="modal fade" id="add-appointment-form" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="add-appointment-message">New Appointment</h3>
+          <h5 id="add-appt-fail-message" style="color: red"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="add-appointment">
+            <div class="form-group">
+              <label for="date" class="col-form-label">Date<span style="color:red">*</span></label>
+              <input type="date" name="appointment[date]" class="form-control" id="appointment-date" placeholder="mm/dd/yyyy" required>
+            </div>
+            <div class="form-group">
+              <label for="Time" class="col-form-label">Time<span style="color:red">*</span></label>
+              <input type="time" name="appointment[time]" class="form-control" id="appointment-time" placeholder="hh:mm" required>
+            </div>
+            <div class="form-group">
+              <label for="weight" class="col-form-label">Weight in Pounds (optional)</label>
+              <div class="input-group">
+                <input type="number" name="appointment[weight]" class="form-control" id="appointment-weight"
+                  placeholder="example: 15" maxlength="80" min="0">
+                  <span class="input-group-addon">lbs</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="description" class="col-form-label">Description (optional)</label>
+              <input type="text" name="appointment[description]" class="form-control" id="appointment-description"
+                placeholder="Appointment Description" maxlength="150">
+            </div>
+            <div class="form-group">
+              <label for="cost" class="col-form-label">Cost (optional)</label>
+              <div class="input-group">
+                <span class="input-group-addon">$</span>
+                <input type="number" step="0.01" name="appointment[cost]" class="form-control" id="appointment-cost"
+                  placeholder="Cost" maxlength="80" min="0">
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="notes" class="col-form-label">Notes (optional)</label>
+              <input type="text" name="appointment[notes]" class="form-control" id="appointment-notes"
+                placeholder="Notes" maxlength="300">
+            </div>
+            <div class="form-group" style="display: none">
+              <label for="pet_id" class="col-form-label">Pet_ID</label>
+              <input type="text" name="appointment[pet_id]" class="form-control" id="pet-id"
+                placeholder="PET_ID" maxlength="80">
+            </div>
+
+          <div class="modal-footer">
+          <button type="button" id="sign-up-close-button" class="btn btn-outline-danger modal-button close-modal" data-dismiss="modal">Close</button>
+          <button type="submit" name="submit" class="btn btn-warning modal-button">Add Appointment</button>
+        </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Pet Modal -->
+
+  <div class="modal fade" id="edit-pet-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Update Pet Information</h5>
+          <h5 id="edit-pet-fail-message" style="color: red"></h5>
+          <span aria-hidden="true"> </span>
+        </div>
+        <div class="modal-body">
+          <form id="update-pet" class="update-pet-form">
+            <div class="form-group">
+              <label for="pets-name" class="col-form-label">Pet's Name<span style="color:red">*</span></label>
+              <input type="text" name="pet[name]" class="form-control" id="pets-name-field" placeholder="Name of Pet" maxlength="80" required>
+            </div>
+            <div class="form-group">
+              <label for="breed" class="col-form-label">Breed (optional)</label>
+              <input type="text" name="pet[breed]" class="form-control" id="breed" placeholder="Breed" maxlength="80">
+            </div>
+            <div class="form-group">
+              <label for="license-number" class="col-form-label">License Number (optional)</label>
+              <input  type="text" name="pet[license_number]" class="form-control" id="License-number"
+                placeholder="License number" maxlength="80">
+            </div>
+            <div class="form-group">
+              <label for="insurance-info" class="col-form-label">Insurance Info (optional)</label>
+              <input  type="text" name="pet[insurance_info]" class="form-control" id="insurance-info"
+                placeholder="Insurance information" maxlength="80">
+            </div>
+            <div class="form-group">
+              <label for="vet-info" class="col-form-label">Vet Info (optional)</label>
+              <input  type="text" name="pet[vet]" class="form-control" id="vet-info"
+                placeholder="Vet information" maxlength="80">
+            </div>
+            <div class="form-group">
+              <label for="url-img" class="col-form-label">Image URL (optional)</label>
+              <input  type="text" name="pet[url]" class="form-control" id="pet-url"
+                placeholder="Image URL" maxlength="80">
+            </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-danger modal-button close-modal" data-dismiss="modal">Close</button>
+          <button type="submit" name="submit" class="btn btn-warning modal-button">Update</button>
+        </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit appointment modal-->
+
+  <div class="modal fade" id="edit-appointment-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Appointment:</h5>
+          <h5 id="edit-appt-fail-message" style="color: red"></h5>
+          <span aria-hidden="true"> </span>
+        </div>
+        <div class="modal-body">
+          <form id="update-appointment" class="update-appointment-form">
+            <div class="form-group">
+              <label for="date" class="col-form-label">Date<span style="color:red">*</span></label>
+              <input type="date" name="appointment[date]" class="form-control" id="appointment-date" placeholder="mm/dd/yyyy" required>
+            </div>
+            <div class="form-group">
+              <label for="Time" class="col-form-label">Time<span style="color:red">*</span></label>
+              <input type="time" name="appointment[time]" class="form-control" id="appointment-time" placeholder="hh:mm" required>
+            </div>
+            <div class="form-group">
+              <label for="weight" class="col-form-label">Weight in Pounds (optional)</label>
+              <div class="input-group">
+                <input type="number" name="appointment[weight]" class="form-control" id="appointment-weight"
+                  placeholder="example: 15" maxlength="80" min="0">
+                <span class="input-group-addon">lbs</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="description" class="col-form-label">Description (optional)</label>
+              <input type="text" name="appointment[description]" class="form-control" id="appointment-description"
+                placeholder="Appointment Description" maxlength="150">
+            </div>
+            <div class="form-group">
+              <label for="cost" class="col-form-label">Cost (optional)</label>
+              <div class="input-group">
+                <span class="input-group-addon">$</span>
+                <input type="number" step="0.01" name="appointment[cost]" class="form-control" id="appointment-cost"
+                placeholder="Cost" maxlength="80" min="0">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="notes" class="col-form-label">Notes (optional)</label>
+              <input type="text" name="appointment[notes]" class="form-control" id="appointment-notes"
+                placeholder="Notes" maxlength="300">
+            </div>
+            <div class="form-group" style="display: none">
+              <label for="pet_id" class="col-form-label">Pet_ID</label>
+              <input type="text" name="appointment[pet_id]" class="form-control" id="pet-id"
+                placeholder="PET_ID">
+            </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-danger modal-button close-modal" data-dismiss="modal">Close</button>
+          <button type="submit" name="submit" class="btn btn-warning modal-button">Update</button>
+        </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- hidden buttons -->
+
+  <button type="button" id="get-pets"> </button>
+
+  <button type="button" id="get-appointments"> </button>
+
+  <!-- Display Pet Section -->
+
+<div id="landing-page-message">
+
+  <!-- handlebars landing page message -->
+
+</div>
+
+
+
+<div class="row container-fluid row col-xs-12">
+  <div class="col-xs-3"> </div>
+  <div class="col-xs-6 container-fluid text-center" id="pet-list">
+      <!-- pets handlebars here -->
+  </div>
+  <div class="col-xs-3"> </div>
+</div>
+
+      <!-- one pet display -->
+<div class="row container-fluid row col-xs-12">
+  <div class="col-xs-3"> </div>
+  <div class="col-xs-6 container-fluid text-center" id="show-one-pet">
+      <!-- pets handlebars here -->
+  </div>
+  <div class="col-xs-3"> </div>
+</div>
+
+  <!-- Appointment Section -->
+
+<div class="row col-xs-12 text-center" id="appointment-list">
+</div>
+
+<!-- Are you sure appointment modal -->
+
+<div id="appointment-delete-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"></h4>
+      </div>
+      <div class="modal-body">
+        <p class="are-you-sure">Are you sure you want to delete this appointment?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="delete-appt-close-button" class="btn btn-outline-danger modal-button close-modal" data-dismiss="modal">Don't Delete</button>
+        <button id="confirm-delete-appt" data-dismiss="modal" aria-label="Close" type="submit" name="submit" class="btn btn-warning modal-button">Yes! Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Are you sure pet modal -->
+
+    <div id="pet-delete-modal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title"></h4>
+          </div>
+          <div class="modal-body">
+            <p class="are-you-sure" id="are-you-sure"></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="delete-pet-close-button" class="btn btn-outline-danger modal-button close-modal" data-dismiss="modal">Don't Delete</button>
+            <button id="confirm-delete-pet" data-dismiss="modal" aria-label="Close" type="button" name="button" class="btn btn-warning modal-button">Yes! Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+</body>
+
+</html>
