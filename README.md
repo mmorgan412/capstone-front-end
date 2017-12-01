@@ -25,7 +25,7 @@
   - Add an installer for pets to upload pictures
   - Add more default images for different types of pets
   - Locate Veteranarians and/or show link to vet's homepage
-  - Show dates in order of date/times
+  - Add reminders for appointments
   - Allow a user to see appointments for all pets on one screen with the pets name  screen with the pets name
 
   I ran into issues with handlebars helpers and had to find a workaround for updating my data.  I also strugged dealing with the time field.  I found that even though I was only sending hh:mm the data was coming back in a timezone other than EST and it was updating to EST because of my browser.  In order to fix this issue I changed the field type to a string.
