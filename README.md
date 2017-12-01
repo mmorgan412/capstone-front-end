@@ -6,7 +6,7 @@
 ## Backend Repo
   https://github.com/mmorgan412/capstone-api
 ## Heroku Site
-  https://git.heroku.com/mels-capstone.git
+  https://mels-capstone.herokuapp.com/
 
 ## Technologies
   This project was made using Javascript, Jquery, CSS, HTML, Handlebars and Bootstrap for the front end.
